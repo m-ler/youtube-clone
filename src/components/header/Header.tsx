@@ -1,5 +1,7 @@
-import { AccountCircleOutlined, Menu, Mic, MoreVert, Search } from '@mui/icons-material';
-import { AppBar, Box, Button, IconButton, InputBase, Toolbar, Tooltip } from '@mui/material';
+'use client';
+
+import { AccountCircleOutlined, Menu, MoreVert } from '@mui/icons-material';
+import { AppBar, Button, IconButton, Toolbar, Tooltip } from '@mui/material';
 import { grey } from '@mui/material/colors';
 import Image from 'next/image';
 import SearchBar from './SearchBar';
