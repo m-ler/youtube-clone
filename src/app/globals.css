@@ -1,0 +1,31 @@
+*::-webkit-scrollbar {
+	width: 7px;
+	height: 7px;
+	background-color: transparent;
+}
+
+*::-webkit-scrollbar-track {
+	border-radius: 100%;
+}
+
+*::-webkit-scrollbar-thumb {
+	background: #8d8d8d;
+	border-radius: 12px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+	background: #a0a0a0;
+}
+
+*::-webkit-scrollbar-corner {
+	background: #398388;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+	display: none;
+}
+
+.no-scrollbar {
+	-ms-overflow-style: none; /* IE and Edge */
+	scrollbar-width: none; /* Firefox */
+}

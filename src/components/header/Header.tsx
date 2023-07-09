@@ -9,8 +9,8 @@ import SearchBar from './SearchBar';
 const Header = () => {
 	return (
 		<AppBar id="app-header" position="static" elevation={0} color="transparent" sx={{ '& .MuiToolbar-root': { minHeight: { xs: 56 } } }}>
-			<Toolbar>
-				<IconButton size="medium" color="default" edge="start" aria-label="menu" sx={{ mr: 2 }}>
+			<Toolbar sx={{ '&.MuiToolbar-root': { px: 2 } }}>
+				<IconButton size="medium" color="default" aria-label="menu" sx={{ mr: 2 }}>
 					<Menu />
 				</IconButton>
 				<Image src="/img/logo.svg" width={90} height={20} alt="Youtube logo" priority />
