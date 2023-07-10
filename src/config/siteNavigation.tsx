@@ -174,6 +174,33 @@ export const mainNavigation = {
 	] as NavItem[],
 };
 
+export const collapsedNavigation = [
+	{
+		name: 'Home',
+		href: '/',
+		icon: <HomeOutlined />,
+		selectedIcon: <Home />,
+	},
+	{
+		name: 'Shorts',
+		href: '/shorts',
+		icon: <OfflineBoltOutlined />,
+		selectedIcon: <OfflineBolt />,
+	},
+	{
+		name: 'Subscriptions',
+		href: '/feed/subscriptions',
+		icon: <SubscriptionsOutlined />,
+		selectedIcon: <Subscriptions />,
+	},
+	{
+		name: 'Library',
+		href: '/feed/library',
+		icon: <VideoLibraryOutlined />,
+		selectedIcon: <VideoLibrary />,
+	},
+] as NavItem[];
+
 type FooterNavItem = {
 	name: string;
 	href: string;

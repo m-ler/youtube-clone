@@ -9,7 +9,7 @@ import { NavItem as NavItemT } from '@/types';
 import Footer from './Footer';
 import { mainNavigation } from '@/config/siteNavigation';
 
-const NavDrawer = () => {
+const FloatingNavDrawer = () => {
 	const onClose = () => {
 		//
 	};
@@ -26,20 +26,9 @@ const NavDrawer = () => {
 	);
 
 	return (
-		<Drawer
-			open
-			onClose={onClose}
-			hideBackdrop
-			elevation={0}
-			variant="permanent"
-			sx={{
-				display: { xs: 'none', lg: 'block' },
-				'&>div': { top: '60px', bottom: 0, borderRight: 'none', width: 236, overflow: 'hidden' },
-			}}
-		>
+		<Drawer open onClose={onClose} elevation={0}>
 			<Box
 				overflow="hidden"
-				mb="60px"
 				role="presentation"
 				sx={{
 					scrollbarGutter: 'stable',
@@ -93,4 +82,4 @@ const NavDrawer = () => {
 	);
 };
 
-export default NavDrawer;
+export default FloatingNavDrawer;

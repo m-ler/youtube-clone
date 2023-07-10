@@ -1,5 +1,5 @@
 import Header from '@/components/header/Header';
-import NavDrawer from '@/components/nav-drawers/NavDrawer';
+import NavDrawerManager from '@/components/nav-drawers/NavDrawerManager';
 import ThemeProvider from '@/lib/mui/ThemeProvider';
 import { PropsWithChildren } from 'react';
 
@@ -7,7 +7,7 @@ const Layout = ({ children }: PropsWithChildren) => {
 	return (
 		<ThemeProvider>
 			<Header />
-			<NavDrawer />
+			<NavDrawerManager />
 			{children}
 		</ThemeProvider>
 	);
