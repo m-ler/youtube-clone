@@ -1,12 +1,21 @@
-import { navDrawerState } from '@/store/nav-drawer'
+import { navigationSidebarsState } from '@/store/navigationSideBars'
 import { Menu } from '@mui/icons-material'
-import { IconButton } from '@mui/material'
+import { IconButton, Theme, useMediaQuery } from '@mui/material'
 
 const NavMenuButton = () => {
-	const { setFloating, setCollapsed } = navDrawerState((state) => state)
+	const { collapsed, floating, setFloating, setCollapsed } = navigationSidebarsState((state) => state)
+	const smallScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('lg'))
+
+	const onClick = () => {
+		if (smallScreen) {
+			setFloating(!floating)
+			return
+		}
+		setCollapsed(!collapsed)
+	}
 
 	return (
-		<IconButton size="medium" color="default" aria-label="menu" sx={{ mr: 2 }}>
+		<IconButton size="medium" color="default" aria-label="menu" sx={{ mr: 2 }} onClick={onClick}>
 			<Menu />
 		</IconButton>
 	)

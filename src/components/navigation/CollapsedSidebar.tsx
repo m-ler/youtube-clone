@@ -3,21 +3,19 @@
 import { Box, Drawer, List } from '@mui/material'
 import NavItem from './NavItem'
 import { collapsedNavigation } from '@/config/siteNavigation'
+import { navigationSidebarsState } from '@/store/navigationSideBars'
 
-const CollapsedNavDrawer = () => {
-	const onClose = () => {
-		//
-	}
+const CollapsedSidebar = () => {
+	const { collapsed } = navigationSidebarsState((state) => state)
 
 	return (
 		<Drawer
 			open
-			onClose={onClose}
 			hideBackdrop
 			elevation={0}
 			variant="permanent"
 			sx={{
-				display: { xs: 'block', lg: 'none' },
+				display: { xs: 'block', lg: collapsed ? 'block' : 'none' },
 				'&>div': { top: '60px', bottom: 0, borderRight: 'none', width: 80, overflow: 'hidden' },
 			}}
 		>
@@ -66,4 +64,4 @@ const CollapsedNavDrawer = () => {
 	)
 }
 
-export default CollapsedNavDrawer
+export default CollapsedSidebar

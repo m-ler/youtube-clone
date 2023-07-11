@@ -7,7 +7,7 @@ type NavDrawerState = {
 	setFloating: (value: boolean) => void;
 };
 
-export const navDrawerState = create<NavDrawerState>(set => ({
+export const navigationSidebarsState = create<NavDrawerState>(set => ({
 	collapsed: false,
 	setCollapsed: value => set({ collapsed: value }),
 	floating: false,

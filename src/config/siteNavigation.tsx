@@ -68,7 +68,7 @@ export const mainNavigation = {
 			selectedIcon: <VideoLibrary />,
 		},
 		{
-			name: 'Shorts',
+			name: 'History',
 			href: '/feed/history',
 			icon: <RestoreOutlined />,
 			selectedIcon: <Restore />,
