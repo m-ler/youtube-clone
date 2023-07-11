@@ -1,18 +1,13 @@
-'use client';
+'use client'
 
-import { Inbox, Mail } from '@mui/icons-material';
-import { Box, Divider, Drawer, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Typography } from '@mui/material';
-import { grey } from '@mui/material/colors';
-import NavItem from './NavItem';
-import { useCallback } from 'react';
-import { NavItem as NavItemT } from '@/types';
-import Footer from './Footer';
-import { collapsedNavigation, mainNavigation } from '@/config/siteNavigation';
+import { Box, Drawer, List } from '@mui/material'
+import NavItem from './NavItem'
+import { collapsedNavigation } from '@/config/siteNavigation'
 
 const CollapsedNavDrawer = () => {
 	const onClose = () => {
 		//
-	};
+	}
 
 	return (
 		<Drawer
@@ -62,13 +57,13 @@ const CollapsedNavDrawer = () => {
 				}}
 			>
 				<List>
-					{collapsedNavigation.map(x => (
+					{collapsedNavigation.map((x) => (
 						<NavItem item={x} key={x.name} />
 					))}
 				</List>
 			</Box>
 		</Drawer>
-	);
-};
+	)
+}
 
-export default CollapsedNavDrawer;
+export default CollapsedNavDrawer

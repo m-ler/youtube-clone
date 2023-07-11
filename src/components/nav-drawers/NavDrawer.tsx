@@ -1,29 +1,28 @@
-'use client';
+'use client'
 
-import { Inbox, Mail } from '@mui/icons-material';
-import { Box, Divider, Drawer, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Typography } from '@mui/material';
-import { grey } from '@mui/material/colors';
-import NavItem from './NavItem';
-import { useCallback } from 'react';
-import { NavItem as NavItemT } from '@/types';
-import Footer from './Footer';
-import { mainNavigation } from '@/config/siteNavigation';
+import { Box, Divider, Drawer, List, Typography } from '@mui/material'
+import { grey } from '@mui/material/colors'
+import NavItem from './NavItem'
+import { useCallback } from 'react'
+import { NavItem as NavItemT } from '@/types'
+import Footer from './Footer'
+import { mainNavigation } from '@/config/siteNavigation'
 
 const NavDrawer = () => {
 	const onClose = () => {
 		//
-	};
+	}
 
 	const getNavList = useCallback(
 		(items: NavItemT[]) => (
 			<List>
-				{items.map(x => (
+				{items.map((x) => (
 					<NavItem item={x} key={x.name} />
 				))}
 			</List>
 		),
 		[]
-	);
+	)
 
 	return (
 		<Drawer
@@ -90,7 +89,7 @@ const NavDrawer = () => {
 				<Footer />
 			</Box>
 		</Drawer>
-	);
-};
+	)
+}
 
-export default NavDrawer;
+export default NavDrawer
