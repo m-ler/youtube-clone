@@ -15,7 +15,7 @@ const CollapsedSidebar = () => {
 			elevation={0}
 			variant="permanent"
 			sx={{
-				display: { xs: 'block', lg: collapsed ? 'block' : 'none' },
+				display: { xs: 'none', sm: 'block', lg: collapsed ? 'block' : 'none' },
 				'&>div': { top: '60px', bottom: 0, borderRight: 'none', width: 80, overflow: 'hidden' },
 			}}
 		>

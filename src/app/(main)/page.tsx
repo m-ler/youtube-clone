@@ -1,7 +1,20 @@
-import Home from './Home';
+import { SITE_BASE_URL } from '@/config'
+import Home from './Home'
+import { youtube_v3 } from 'googleapis'
 
-const Page = () => {
-	return <Home />;
-};
+const getFeed = async () => {
+	try {
+		const res = await fetch(`${SITE_BASE_URL}/api/videos`)
+		const data = (await res.json()) as youtube_v3.Schema$VideoListResponse
+		return data.items
+	} catch (error) {
+		return []
+	}
+}
 
-export default Page;
+const Page = async () => {
+	const videos = await getFeed()
+	return <Home videos={videos || []} />
+}
+
+export default Page

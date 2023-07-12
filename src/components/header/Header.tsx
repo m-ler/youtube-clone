@@ -11,10 +11,10 @@ const Header = () => {
 	return (
 		<AppBar
 			id="app-header"
-			position="static"
+			position="sticky"
 			elevation={0}
 			color="transparent"
-			sx={{ '& .MuiToolbar-root': { minHeight: { xs: 56 } } }}
+			sx={{ '& .MuiToolbar-root': { minHeight: { xs: 56 } }, bgcolor: 'white', overflow: 'hidden' }}
 		>
 			<Toolbar sx={{ '&.MuiToolbar-root': { px: 2 } }}>
 				<NavMenuButton />
