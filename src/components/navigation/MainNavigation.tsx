@@ -20,12 +20,12 @@ const MainNavigation = () => {
 
 	return (
 		<Box
-			overflow="hidden"
 			role="presentation"
+			overflow="auto"
 			sx={{
 				scrollbarGutter: 'stable',
-				'&:hover': {
-					overflow: 'auto',
+				'&:not(:hover)::-webkit-scrollbar-thumb ': {
+					background: 'transparent',
 				},
 				'& > .MuiList-root': {
 					px: 1.5,

@@ -6,7 +6,7 @@ export const GET = async () => {
 		part: ['snippet,contentDetails,statistics'],
 		chart: 'mostPopular',
 		regionCode: 'US',
-		maxResults: 100,
+		maxResults: 50,
 	})
 
 	if (res && res.data) return NextResponse.json(res.data)

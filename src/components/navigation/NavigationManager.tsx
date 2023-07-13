@@ -1,11 +1,11 @@
 'use client'
 
 import { Theme, useMediaQuery } from '@mui/material'
-import CollapsedSidebar from './CollapsedSideBar'
 import FloatingSidebar from './FloatingSidebar'
 import StaticSidebar from './StaticSidebar'
 import { useEffect } from 'react'
 import { navigationSidebarsState } from '@/store/navigationSideBars'
+import CollapsedSidebar from './CollapsedSidebar'
 
 const NavigationManager = () => {
 	const smallScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('lg'))
