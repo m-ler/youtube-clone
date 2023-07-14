@@ -1,9 +1,8 @@
-import { formatISO8601Duration } from '@/lib/moment/utils'
-import { Box, Card, Tooltip, Typography, alpha } from '@mui/material'
+import { Box, Card, Tooltip, Typography } from '@mui/material'
 import { grey } from '@mui/material/colors'
 import { youtube_v3 } from 'googleapis'
 import moment from 'moment'
-import Image from 'next/image'
+import VideoThumbnail from './VideoThumbnail'
 
 type Props = {
 	video: youtube_v3.Schema$Video
@@ -16,6 +15,7 @@ const formatNumber = new Intl.NumberFormat('en', {
 }).format
 
 const VideoCard = ({ video }: Props) => {
+	const timeAgo = moment(video.snippet?.publishedAt).fromNow().replace(/^a/, '1')
 	const viewCount = video.statistics?.viewCount
 	const views =
 		viewCount === '0'
@@ -24,36 +24,7 @@ const VideoCard = ({ video }: Props) => {
 
 	return (
 		<Card sx={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column' }} elevation={0}>
-			<Box position="relative">
-				<Image
-					priority
-					src={video.snippet?.thumbnails?.standard?.url || ''}
-					alt="Thumbnail"
-					width={640}
-					height={360}
-					style={{
-						borderRadius: 15,
-						width: '100%',
-						height: 'auto',
-						display: 'block',
-						objectFit: 'cover',
-						aspectRatio: '16/8.9',
-					}}
-				/>
-				<Typography
-					position="absolute"
-					bottom="5px"
-					right="5px"
-					fontSize={12}
-					color="white"
-					px={0.5}
-					borderRadius={1.25}
-					bgcolor={alpha('#000', 0.75)}
-					sx={{ pointerEvents: 'none' }}
-				>
-					{formatISO8601Duration(video.contentDetails?.duration || '')}
-				</Typography>
-			</Box>
+			<VideoThumbnail video={video} />
 
 			<Box display="flex" flexDirection="column" flexGrow={1} mt={1.5}>
 				<Typography
@@ -82,7 +53,7 @@ const VideoCard = ({ video }: Props) => {
 					<Typography display="inline" mx={0.75} fontSize={10} component="span">
 						•
 					</Typography>
-					{moment(video.snippet?.publishedAt).fromNow()}
+					{timeAgo}
 				</Typography>
 			</Box>
 		</Card>

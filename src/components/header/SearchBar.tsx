@@ -1,14 +1,36 @@
-import { Mic, Search } from '@mui/icons-material';
-import { Box, Button, IconButton, InputBase, Tooltip } from '@mui/material';
-import { grey } from '@mui/material/colors';
+import { Close, Mic, Search } from '@mui/icons-material'
+import { Box, Button, IconButton, InputBase, Tooltip, Stack } from '@mui/material'
+import { grey } from '@mui/material/colors'
+import { useRouter, useSearchParams } from 'next/navigation'
+import { FormEvent, useState } from 'react'
 
 const SearchBar = () => {
+	const router = useRouter()
+	const searchParams = useSearchParams()
+	const [value, setValue] = useState(searchParams.get('search_query') || '')
+
+	const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+		e.preventDefault()
+		const searchQuery = value.trim()
+		if (searchQuery) router.push(`/results?search_query=${searchQuery}`)
+	}
+
 	return (
-		<Box display="flex" flexDirection="row" flexGrow={1} mx="auto" maxWidth={640}>
-			<Box border="1px solid" borderColor={grey[300]} borderRadius="40px 0px 0px 40px" flexGrow={1}>
-				<InputBase sx={{ px: 2, width: '100%', height: '100%' }} placeholder="Search" inputProps={{ 'aria-label': 'search' }} />
-			</Box>
+		<Box component="form" display="flex" flexDirection="row" flexGrow={1} mx="auto" maxWidth={640} onSubmit={onSubmit}>
+			<Stack direction="row" border="1px solid" borderColor={grey[300]} borderRadius="40px 0px 0px 40px" flexGrow={1}>
+				<InputBase
+					sx={{ pl: 2, width: '100%', height: '100%' }}
+					placeholder="Search"
+					inputProps={{ 'aria-label': 'search' }}
+					value={value}
+					onChange={(e) => setValue(e.target.value)}
+				/>
+				<IconButton onClick={() => setValue('')} sx={{ display: value ? 'inline-flex' : 'none' }}>
+					<Close />
+				</IconButton>
+			</Stack>
 			<Button
+				type="submit"
 				color="inherit"
 				sx={{
 					bgcolor: grey[100],
@@ -21,13 +43,14 @@ const SearchBar = () => {
 			>
 				<Search sx={{ color: grey[500], fontSize: 26 }} />
 			</Button>
+
 			<Tooltip title="Search with your voice">
 				<IconButton aria-label="voice search" sx={{ ml: 1 }}>
 					<Mic sx={{ color: grey[900] }} />
 				</IconButton>
 			</Tooltip>
 		</Box>
-	);
-};
+	)
+}
 
-export default SearchBar;
+export default SearchBar
