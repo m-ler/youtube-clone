@@ -14,7 +14,7 @@ const formatNumber = new Intl.NumberFormat('en', {
 	maximumSignificantDigits: 3,
 }).format
 
-const VideoCard = ({ video }: Props) => {
+const HorizontalVideoCard = ({ video }: Props) => {
 	const timeAgo = moment(video.snippet?.publishedAt).fromNow().replace(/^a/, '1')
 	const viewCount = video.statistics?.viewCount
 	const views =
@@ -23,13 +23,15 @@ const VideoCard = ({ video }: Props) => {
 			: `${formatNumber(parseInt(viewCount || '0'))} ${viewCount === '1' ? 'view' : 'views'}`
 
 	return (
-		<Card sx={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column' }} elevation={0}>
-			<VideoThumbnail video={video} />
+		<Card sx={{ width: '100%', height: '100%', maxHeight: '200px', display: 'flex', gap: 2 }} elevation={0}>
+			<Box maxWidth={360} minWidth={240}>
+				<VideoThumbnail video={video} />
+			</Box>
 
-			<Box display="flex" flexDirection="column" flexGrow={1} mt={1.5}>
+			<Box width="90%" display="flex" flexDirection="column" flexGrow={1} overflow="hidden" mr="auto">
 				<Typography
 					title={video.snippet?.title || ''}
-					fontSize={16}
+					fontSize={18}
 					color={grey[900]}
 					fontWeight="600"
 					lineHeight="1.4rem"
@@ -37,17 +39,6 @@ const VideoCard = ({ video }: Props) => {
 				>
 					{video.snippet?.title}
 				</Typography>
-				<Tooltip title={video.snippet?.channelTitle} placement="top">
-					<Typography
-						fontSize={14}
-						mt={0.4}
-						color={grey[700]}
-						mr="auto"
-						sx={{ overflow: 'hidden', WebkitBoxOrient: 'vertical', display: '-webkit-box', WebkitLineClamp: 1 }}
-					>
-						{video.snippet?.channelTitle}
-					</Typography>
-				</Tooltip>
 				<Typography fontSize={14} color={grey[700]}>
 					{viewCount && (
 						<>
@@ -60,9 +51,29 @@ const VideoCard = ({ video }: Props) => {
 
 					{timeAgo}
 				</Typography>
+				<Tooltip title={video.snippet?.channelTitle} placement="top">
+					<Typography
+						fontSize={14}
+						mt={0.4}
+						color={grey[700]}
+						mr="auto"
+						sx={{ overflow: 'hidden', WebkitBoxOrient: 'vertical', display: '-webkit-box', WebkitLineClamp: 1 }}
+					>
+						{video.snippet?.channelTitle}
+					</Typography>
+				</Tooltip>
+				<Typography
+					fontSize={14}
+					mt={0.4}
+					color={grey[700]}
+					mr="auto"
+					sx={{ overflow: 'hidden', WebkitBoxOrient: 'vertical', display: '-webkit-box', WebkitLineClamp: 1 }}
+				>
+					{video.snippet?.description}
+				</Typography>
 			</Box>
 		</Card>
 	)
 }
 
-export default VideoCard
+export default HorizontalVideoCard

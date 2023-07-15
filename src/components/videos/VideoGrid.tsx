@@ -11,8 +11,8 @@ type Props = {
 const VideoGrid = ({ videos }: Props) => {
 	return (
 		<Grid container columns={{ xs: 1, sm: 2, md: 3, lg: 4, xl: 5, '2xl': 6 }} columnSpacing={2} rowSpacing={5} pb={12}>
-			{videos.map((x) => (
-				<Grid item key={x.id} xs={1}>
+			{videos.map((x, i) => (
+				<Grid item key={i} xs={1}>
 					<VideoCard video={x} />
 				</Grid>
 			))}

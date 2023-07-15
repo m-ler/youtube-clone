@@ -24,8 +24,6 @@ export const GET = async (req: NextRequest, { params }: Params) => {
 			type: ['video'],
 		})
 
-		console.log(res.data)
-
 		return NextResponse.json(res.data)
 	} catch (e) {
 		return new NextResponse("Couldn't fetch results.", {

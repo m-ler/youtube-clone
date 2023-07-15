@@ -9,8 +9,6 @@ type Props = {
 }
 
 const Home = ({ videos }: Props) => {
-	console.log(videos)
-
 	return (
 		<Container maxWidth="2xl" sx={{ pt: 1.5, '&': { px: 3 } }}>
 			<VideoGrid videos={videos} />

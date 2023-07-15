@@ -27,19 +27,21 @@ const VideoThumbnail = ({ video }: Props) => {
 					aspectRatio: '16/8.9',
 				}}
 			/>
-			<Typography
-				position="absolute"
-				bottom="5px"
-				right="5px"
-				fontSize={12}
-				color="white"
-				px={0.5}
-				borderRadius={1.25}
-				bgcolor={alpha('#000', 0.75)}
-				sx={{ pointerEvents: 'none' }}
-			>
-				{duration}
-			</Typography>
+			{video.contentDetails?.duration && (
+				<Typography
+					position="absolute"
+					bottom="5px"
+					right="5px"
+					fontSize={12}
+					color="white"
+					px={0.5}
+					borderRadius={1.25}
+					bgcolor={alpha('#000', 0.75)}
+					sx={{ pointerEvents: 'none' }}
+				>
+					{duration}
+				</Typography>
+			)}
 		</Box>
 	)
 }

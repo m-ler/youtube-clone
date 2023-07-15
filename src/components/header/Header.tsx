@@ -6,6 +6,7 @@ import { grey } from '@mui/material/colors'
 import Image from 'next/image'
 import SearchBar from './SearchBar'
 import NavMenuButton from '../NavMenuButton'
+import Link from 'next/link'
 
 const Header = () => {
 	return (
@@ -18,7 +19,9 @@ const Header = () => {
 		>
 			<Toolbar sx={{ '&.MuiToolbar-root': { px: 2 } }}>
 				<NavMenuButton />
-				<Image src="/img/logo.svg" width={90} height={20} alt="Youtube logo" priority />
+				<Link href="/">
+					<Image src="/img/logo.svg" width={90} height={20} alt="Youtube logo" priority />
+				</Link>
 				<SearchBar />
 				<Tooltip title="Settings">
 					<IconButton aria-label="settings menu" sx={{ mr: 1 }}>

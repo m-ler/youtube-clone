@@ -1,6 +1,6 @@
 'use client'
 
-import VideoGrid from '@/components/videos/VideoGrid'
+import VideoList from '@/components/videos/VideoList'
 import { Container } from '@mui/material'
 import { youtube_v3 } from 'googleapis'
 
@@ -9,11 +9,9 @@ type Props = {
 }
 
 const Results = ({ videos }: Props) => {
-	console.log(videos)
-
 	return (
-		<Container maxWidth="2xl" sx={{ pt: 1.5, '&': { px: 3 } }}>
-			<VideoGrid videos={videos} />
+		<Container maxWidth="lg" sx={{ pt: 1.5, '&': { px: 3 } }}>
+			<VideoList videos={videos} />
 		</Container>
 	)
 }
