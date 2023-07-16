@@ -16,7 +16,7 @@ const SearchBar = () => {
 	}
 
 	return (
-		<Box component="form" display="flex" flexDirection="row" flexGrow={1} mx="auto" maxWidth={640} onSubmit={onSubmit}>
+		<Box component="form" display="flex" flexDirection="row" flexGrow={1} mx="auto" width="100%" onSubmit={onSubmit}>
 			<Stack direction="row" border="1px solid" borderColor={grey[300]} borderRadius="40px 0px 0px 40px" flexGrow={1}>
 				<InputBase
 					sx={{ pl: 2, width: '100%', height: '100%' }}

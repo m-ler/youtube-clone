@@ -1,14 +1,22 @@
 'use client'
 
-import { AccountCircleOutlined, MoreVert } from '@mui/icons-material'
-import { AppBar, Button, IconButton, Toolbar, Tooltip } from '@mui/material'
+import { AccountCircleOutlined, ArrowBackOutlined, MoreVert, Search } from '@mui/icons-material'
+import { AppBar, Box, Button, IconButton, Theme, Toolbar, Tooltip, useMediaQuery } from '@mui/material'
 import { grey } from '@mui/material/colors'
 import Image from 'next/image'
 import SearchBar from './SearchBar'
 import NavMenuButton from '../NavMenuButton'
 import Link from 'next/link'
+import { useEffect, useState } from 'react'
 
 const Header = () => {
+	const [onlySearchBar, setOnlySearchBar] = useState(false)
+	const tabletScreen = useMediaQuery((theme: Theme) => theme.breakpoints.up('sm'))
+
+	useEffect(() => {
+		if (tabletScreen) setOnlySearchBar(false)
+	}, [tabletScreen])
+
 	return (
 		<AppBar
 			id="app-header"
@@ -18,23 +26,42 @@ const Header = () => {
 			sx={{ '& .MuiToolbar-root': { minHeight: { xs: 56 } }, bgcolor: 'white', overflow: 'hidden' }}
 		>
 			<Toolbar sx={{ '&.MuiToolbar-root': { px: 2 } }}>
-				<NavMenuButton />
-				<Link href="/">
-					<Image src="/img/logo.svg" width={90} height={20} alt="Youtube logo" priority />
-				</Link>
-				<SearchBar />
-				<Tooltip title="Settings">
-					<IconButton aria-label="settings menu" sx={{ mr: 1 }}>
-						<MoreVert />
-					</IconButton>
-				</Tooltip>
-				<Button
-					variant="outlined"
-					startIcon={<AccountCircleOutlined />}
-					sx={{ borderRadius: 5, borderColor: grey[200] }}
-				>
-					Sign in
-				</Button>
+				{onlySearchBar ? (
+					<>
+						<IconButton aria-label="settings menu" sx={{ mr: 1 }} onClick={() => setOnlySearchBar(false)}>
+							<ArrowBackOutlined />
+						</IconButton>
+						<SearchBar />
+					</>
+				) : (
+					<>
+						<NavMenuButton />
+						<Link href="/">
+							<Image src="/img/logo.svg" width={90} height={20} alt="Youtube logo" priority />
+						</Link>
+						<Box display={{ xs: 'none', sm: 'inline' }} mx="auto" pl={2} maxWidth={640} width="100%">
+							<SearchBar />
+						</Box>
+
+						<Tooltip title="Search">
+							<IconButton aria-label="search" sx={{ ml: 'auto' }} onClick={() => setOnlySearchBar(true)}>
+								<Search />
+							</IconButton>
+						</Tooltip>
+						<Tooltip title="Settings">
+							<IconButton aria-label="settings menu" sx={{ mr: 1 }}>
+								<MoreVert />
+							</IconButton>
+						</Tooltip>
+						<Button
+							variant="outlined"
+							startIcon={<AccountCircleOutlined />}
+							sx={{ borderRadius: 5, borderColor: grey[200] }}
+						>
+							Sign in
+						</Button>
+					</>
+				)}
 			</Toolbar>
 		</AppBar>
 	)
