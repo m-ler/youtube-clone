@@ -9,10 +9,55 @@ import {
 	WatchLaterOutlined,
 } from '@mui/icons-material'
 import { Divider, ListItemIcon, ListItemText, Menu, MenuItem, MenuList } from '@mui/material'
+import { ReactNode } from 'react'
 
 type Props = {
 	anchorEl: HTMLElement | null
 	onClose: () => void
+}
+
+type MenuOption = {
+	icon: ReactNode
+	name: string
+}
+
+const menuItems: { primary: MenuOption[]; secondary: MenuOption[] } = {
+	primary: [
+		{
+			icon: <PlaylistPlay fontSize="small" />,
+			name: 'Add to queue',
+		},
+		{
+			icon: <WatchLaterOutlined fontSize="small" />,
+			name: 'Save to Watch later',
+		},
+		{
+			icon: <PlaylistAddOutlined fontSize="small" />,
+			name: 'Save to playlist',
+		},
+		{
+			icon: <FileDownloadOutlined fontSize="small" />,
+			name: 'Download',
+		},
+		{
+			icon: <SendOutlined fontSize="small" />,
+			name: 'Share',
+		},
+	],
+	secondary: [
+		{
+			icon: <BlockOutlined fontSize="small" />,
+			name: 'Not interested',
+		},
+		{
+			icon: <RemoveCircleOutlineOutlined fontSize="small" />,
+			name: "Don't recommend channel",
+		},
+		{
+			icon: <FlagOutlined fontSize="small" />,
+			name: 'Report',
+		},
+	],
 }
 
 const MoreMenu = ({ anchorEl, onClose }: Props) => {
@@ -36,56 +81,21 @@ const MoreMenu = ({ anchorEl, onClose }: Props) => {
 			}}
 		>
 			<MenuList>
-				<MenuItem onClick={onClose}>
-					<ListItemIcon>
-						<PlaylistPlay fontSize="small" />
-					</ListItemIcon>
-					<ListItemText>Add to queue</ListItemText>
-				</MenuItem>
-				<MenuItem onClick={onClose}>
-					<ListItemIcon>
-						<WatchLaterOutlined fontSize="small" />
-					</ListItemIcon>
-					<ListItemText>Save to Watch later</ListItemText>
-				</MenuItem>
-				<MenuItem onClick={onClose}>
-					<ListItemIcon>
-						<PlaylistAddOutlined fontSize="small" />
-					</ListItemIcon>
-					<ListItemText>Save to playlist</ListItemText>
-				</MenuItem>
-				<MenuItem onClick={onClose}>
-					<ListItemIcon>
-						<FileDownloadOutlined fontSize="small" />
-					</ListItemIcon>
-					<ListItemText>Download</ListItemText>
-				</MenuItem>
-				<MenuItem onClick={onClose}>
-					<ListItemIcon>
-						<SendOutlined fontSize="small" />
-					</ListItemIcon>
-					<ListItemText>Share</ListItemText>
-				</MenuItem>
+				{menuItems.primary.map((x) => (
+					<MenuItem onClick={onClose} key={x.name}>
+						<ListItemIcon>{x.icon}</ListItemIcon>
+						<ListItemText>{x.name}</ListItemText>
+					</MenuItem>
+				))}
 
 				<Divider />
-				<MenuItem onClick={onClose}>
-					<ListItemIcon>
-						<BlockOutlined fontSize="small" />
-					</ListItemIcon>
-					<ListItemText>Not interested</ListItemText>
-				</MenuItem>
-				<MenuItem onClick={onClose}>
-					<ListItemIcon>
-						<RemoveCircleOutlineOutlined fontSize="small" />
-					</ListItemIcon>
-					<ListItemText>Don&apos;t recommend channel</ListItemText>
-				</MenuItem>
-				<MenuItem onClick={onClose}>
-					<ListItemIcon>
-						<FlagOutlined fontSize="small" />
-					</ListItemIcon>
-					<ListItemText>Report</ListItemText>
-				</MenuItem>
+
+				{menuItems.secondary.map((x) => (
+					<MenuItem onClick={onClose} key={x.name}>
+						<ListItemIcon>{x.icon}</ListItemIcon>
+						<ListItemText>{x.name}</ListItemText>
+					</MenuItem>
+				))}
 			</MenuList>
 		</Menu>
 	)
