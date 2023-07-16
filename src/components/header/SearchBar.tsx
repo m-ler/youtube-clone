@@ -23,6 +23,7 @@ const SearchBar = () => {
 					placeholder="Search"
 					inputProps={{ 'aria-label': 'search' }}
 					value={value}
+					spellCheck="false"
 					onChange={(e) => setValue(e.target.value)}
 				/>
 				<IconButton onClick={() => setValue('')} sx={{ display: value ? 'inline-flex' : 'none' }}>
