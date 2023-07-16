@@ -9,8 +9,6 @@ type Props = {
 }
 
 const VideoList = ({ videos }: Props) => {
-	console.log(videos)
-
 	return (
 		<Stack spacing={1.5} pb={4}>
 			{videos.map((x, i) => (

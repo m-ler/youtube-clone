@@ -12,7 +12,7 @@ const SearchBar = () => {
 	const onSubmit = (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
 		const searchQuery = value.trim()
-		if (searchQuery) router.push(`/results?search_query=${searchQuery}`)
+		if (searchQuery) router.replace(`/results?search_query=${searchQuery}`)
 	}
 
 	return (
