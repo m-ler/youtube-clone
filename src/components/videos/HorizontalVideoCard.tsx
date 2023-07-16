@@ -46,7 +46,7 @@ const HorizontalVideoCard = ({ video }: Props) => {
 			</Box>
 
 			<Box width="90%" display="flex" flexDirection="column" flexGrow={1} mr="auto">
-				<Stack direction="row" alignItems="start">
+				<Stack position="relative" pr={4}>
 					<Typography
 						flexGrow={1}
 						title={video.snippet?.title || ''}
@@ -60,7 +60,7 @@ const HorizontalVideoCard = ({ video }: Props) => {
 					</Typography>
 					<IconButton
 						className="more-menu"
-						sx={{ opacity: 0, translate: '0 -18%' }}
+						sx={{ opacity: 0, position: 'absolute', top: '-6px', right: 0 }}
 						onClick={(e) => setMenuButton(e.currentTarget)}
 					>
 						<MoreVert sx={{ fontSize: 20 }} />
