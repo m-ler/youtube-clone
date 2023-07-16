@@ -44,7 +44,11 @@ const Header = () => {
 						</Box>
 
 						<Tooltip title="Search">
-							<IconButton aria-label="search" sx={{ ml: 'auto' }} onClick={() => setOnlySearchBar(true)}>
+							<IconButton
+								aria-label="search"
+								sx={{ ml: 'auto', display: { xs: 'inline-flex', sm: 'none' } }}
+								onClick={() => setOnlySearchBar(true)}
+							>
 								<Search />
 							</IconButton>
 						</Tooltip>
