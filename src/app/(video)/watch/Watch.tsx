@@ -1,14 +1,33 @@
 'use client'
 
+import VideoEmbed from '@/components/VideoEmbed'
 import VideoListSkeleton from '@/components/videos/VideoListSkeleton'
-import { Box } from '@mui/material'
+import { Box, Container } from '@mui/material'
 
-const Watch = () => {
+type Props = {
+	videoId: string
+}
+
+const Watch = ({ videoId }: Props) => {
 	return (
-		<Box display="flex" gap={2}>
-			<Box bgcolor="#000" width={240} height={130} sx={{ aspectRatio: '16/9' }}></Box>
-			<VideoListSkeleton />
-		</Box>
+		<Container maxWidth={false} sx={{ maxWidth: 'min(100%,1765px)', width: '100%', pt: 3, px: 3 }}>
+			<Box sx={{ display: 'grid', gridTemplateColumns: '3fr 1fr', gridTemplateRows: 'auto 1fr' }}>
+				<Box
+					maxWidth="100%"
+					height="auto"
+					maxHeight="720px"
+					gridColumn="1/2"
+					overflow="hidden"
+					sx={{ aspectRatio: '16/9' }}
+				>
+					<VideoEmbed videoId={videoId} />
+				</Box>
+				<Box maxWidth="100%" gridColumn="2/3" pl={2} pr={4}>
+					<VideoListSkeleton />
+				</Box>
+				<Box gridColumn="1/2" gridRow="2/3" bgcolor="blue"></Box>
+			</Box>
+		</Container>
 	)
 }
 

@@ -7,9 +7,13 @@ import { useEffect } from 'react'
 import { navigationSidebarsState } from '@/store/navigationSideBars'
 import CollapsedSidebar from './CollapsedSidebar'
 
-const NavigationManager = () => {
+type Props = {
+	floatingOnly?: boolean
+}
+
+const NavigationManager = ({ floatingOnly }: Props) => {
 	const smallScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('lg'))
-	const { setFloating } = navigationSidebarsState((state) => state)
+	const { setFloating, setFloatingOnly } = navigationSidebarsState((state) => state)
 
 	useEffect(() => {
 		if (!smallScreen) {
@@ -17,11 +21,19 @@ const NavigationManager = () => {
 		}
 	}, [smallScreen])
 
+	useEffect(() => {
+		setFloatingOnly(Boolean(floatingOnly))
+	}, [floatingOnly])
+
 	return (
 		<>
-			<StaticSidebar />
-			<CollapsedSidebar />
 			<FloatingSidebar />
+			{!floatingOnly && (
+				<>
+					<StaticSidebar />
+					<CollapsedSidebar />
+				</>
+			)}
 		</>
 	)
 }

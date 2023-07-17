@@ -2,7 +2,7 @@ import Header from '@/components/header/Header'
 import NavigationManager from '@/components/navigation/NavigationManager'
 import ThemeProvider from '@/lib/mui/ThemeProvider'
 import { PropsWithChildren } from 'react'
-import MainLayout from '../../components/MainLayout'
+import MainLayout from './MainLayout'
 
 const Layout = ({ children }: PropsWithChildren) => {
 	return (

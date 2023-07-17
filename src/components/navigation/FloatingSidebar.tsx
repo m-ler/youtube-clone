@@ -7,7 +7,7 @@ import { navigationSidebarsState } from '@/store/navigationSideBars'
 import MainNavigation from './MainNavigation'
 
 const FloatingSidebar = () => {
-	const { floating, setFloating } = navigationSidebarsState((state) => state)
+	const { floating, setFloating, floatingOnly } = navigationSidebarsState((state) => state)
 
 	const onClose = () => {
 		setFloating(false)
@@ -20,7 +20,7 @@ const FloatingSidebar = () => {
 			elevation={0}
 			sx={{
 				overflow: 'hidden',
-				display: { xs: 'block', lg: 'none' },
+				display: { xs: 'block', lg: floatingOnly ? 'block' : 'none' },
 				'&>div': { pr: 0.5 },
 			}}
 		>

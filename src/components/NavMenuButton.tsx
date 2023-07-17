@@ -3,11 +3,11 @@ import { Menu } from '@mui/icons-material'
 import { IconButton, Theme, useMediaQuery } from '@mui/material'
 
 const NavMenuButton = () => {
-	const { collapsed, floating, setFloating, setCollapsed } = navigationSidebarsState((state) => state)
+	const { collapsed, floating, setFloating, setCollapsed, floatingOnly } = navigationSidebarsState((state) => state)
 	const smallScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('lg'))
 
 	const onClick = () => {
-		if (smallScreen) {
+		if (smallScreen || floatingOnly) {
 			setFloating(!floating)
 			return
 		}

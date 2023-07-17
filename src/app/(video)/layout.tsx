@@ -1,4 +1,3 @@
-import MainLayout from '@/components/MainLayout'
 import Header from '@/components/header/Header'
 import NavigationManager from '@/components/navigation/NavigationManager'
 import ThemeProvider from '@/lib/mui/ThemeProvider'
@@ -8,8 +7,8 @@ const Layout = ({ children }: PropsWithChildren) => {
 	return (
 		<ThemeProvider>
 			<Header />
-			<NavigationManager />
-			<MainLayout>{children}</MainLayout>
+			<NavigationManager floatingOnly />
+			{children}
 		</ThemeProvider>
 	)
 }

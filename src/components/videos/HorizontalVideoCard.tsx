@@ -1,5 +1,5 @@
 'use client'
-import { Box, Card, IconButton, Stack, Tooltip, Typography } from '@mui/material'
+import { Box, Card, IconButton, Stack, Tooltip, Typography, Link as MUILink } from '@mui/material'
 import { grey } from '@mui/material/colors'
 import { youtube_v3 } from 'googleapis'
 import moment from 'moment'
@@ -7,6 +7,7 @@ import VideoThumbnail from './VideoThumbnail'
 import { MoreVert } from '@mui/icons-material'
 import { useState } from 'react'
 import MoreMenu from './MoreMenu'
+import Link from 'next/link'
 
 type Props = {
 	video: youtube_v3.Schema$Video
@@ -22,6 +23,8 @@ const HorizontalVideoCard = ({ video }: Props) => {
 	const timeAgo = moment(video.snippet?.publishedAt).fromNow().replace(/^a/, '1')
 	const viewCount = video.statistics?.viewCount
 	const [menuButton, setMenuButton] = useState<HTMLElement | null>(null)
+
+	const videoId = typeof video.id === 'string' ? video.id : (video.id as unknown as { videoId: string }).videoId
 
 	const views =
 		viewCount === '0'
@@ -47,17 +50,24 @@ const HorizontalVideoCard = ({ video }: Props) => {
 
 			<Box width="90%" display="flex" flexDirection="column" flexGrow={1} mr="auto">
 				<Stack position="relative" pr={4}>
-					<Typography
-						flexGrow={1}
+					<MUILink
+						href={`/watch?v=${videoId}`}
+						component={Link}
 						title={video.snippet?.title || ''}
-						fontSize={18}
+						fontSize={16}
 						color={grey[900]}
 						fontWeight="600"
 						lineHeight="1.4rem"
-						sx={{ overflow: 'hidden', WebkitBoxOrient: 'vertical', display: '-webkit-box', WebkitLineClamp: 2 }}
+						sx={{
+							overflow: 'hidden',
+							WebkitBoxOrient: 'vertical',
+							display: '-webkit-box',
+							WebkitLineClamp: 2,
+							textDecoration: 'none',
+						}}
 					>
 						{video.snippet?.title}
-					</Typography>
+					</MUILink>
 					<IconButton
 						className="more-menu"
 						sx={{ opacity: 0, position: 'absolute', top: '-6px', right: 0 }}
