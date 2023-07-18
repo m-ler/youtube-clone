@@ -1,18 +1,18 @@
 import { Close, Mic, Search } from '@mui/icons-material'
 import { Box, Button, IconButton, InputBase, Tooltip, Stack } from '@mui/material'
 import { grey } from '@mui/material/colors'
-import { useRouter, useSearchParams } from 'next/navigation'
+import { useParams, useRouter } from 'next/navigation'
 import { FormEvent, useState } from 'react'
 
 const SearchBar = () => {
 	const router = useRouter()
-	const searchParams = useSearchParams()
-	const [value, setValue] = useState(searchParams.get('search_query') || '')
+	const params = useParams()
+	const [value, setValue] = useState(params.query ? decodeURIComponent(params.query as string) : '')
 
 	const onSubmit = (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
 		const searchQuery = value.trim()
-		if (searchQuery) router.replace(`/results?search_query=${searchQuery}`)
+		if (searchQuery) router.push(`/results/${searchQuery}`)
 	}
 
 	return (
