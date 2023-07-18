@@ -2,6 +2,7 @@
 
 import VideoEmbed from '@/components/VideoEmbed'
 import VideoListSkeleton from '@/components/videos/VideoListSkeleton'
+import VideoMetadata from '@/components/watch/video-metadata'
 import { Box, Container } from '@mui/material'
 
 type Props = {
@@ -22,10 +23,12 @@ const Watch = ({ videoId }: Props) => {
 				>
 					<VideoEmbed videoId={videoId} />
 				</Box>
-				<Box maxWidth="100%" gridColumn="2/3" pl={2} pr={4}>
+				<Box maxWidth="100%" gridColumn="2/3" gridRow="1/3" pl={2} pr={4}>
 					<VideoListSkeleton />
 				</Box>
-				<Box gridColumn="1/2" gridRow="2/3" bgcolor="blue"></Box>
+				<Box gridColumn="1/2" gridRow="2/3" pt={2} pb={4}>
+					<VideoMetadata videoId={videoId} />
+				</Box>
 			</Box>
 		</Container>
 	)
