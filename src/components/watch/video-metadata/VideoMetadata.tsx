@@ -17,9 +17,20 @@ const getVideo = async (videoId: string) => {
 	}
 }
 
+const getChannel = async (channelId: string) => {
+	try {
+		const res = await fetch(`${SITE_BASE_URL}/api/channel/${channelId}`)
+		const data = (await res.json()) as youtube_v3.Schema$ChannelListResponse
+		return data.items?.[0] || null
+	} catch (error) {
+		return null
+	}
+}
+
 const Component = async ({ videoId }: Props) => {
 	const video = await getVideo(videoId)
-	return video ? <VideoMetadataCard video={video} /> : <></>
+	const channel = video?.snippet?.channelId ? await getChannel(video.snippet.channelId) : null
+	return video ? <VideoMetadataCard video={video} channel={channel} /> : <></>
 }
 
 const VideoMetadata = ({ videoId }: Props) => {

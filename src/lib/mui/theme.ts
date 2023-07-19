@@ -1,4 +1,5 @@
 import { createTheme } from '@mui/material'
+import { grey, purple } from '@mui/material/colors'
 import { Roboto_Flex } from 'next/font/google'
 
 const roboto = Roboto_Flex({ subsets: ['latin'], weight: ['100', '300', '400', '500', '700', '900'] })
@@ -10,6 +11,9 @@ declare module '@mui/material/styles' {
 }
 
 const theme = createTheme({
+	palette: {
+		primary: { ...grey, main: '#000' },
+	},
 	typography: {
 		fontFamily: roboto.style.fontFamily,
 	},
