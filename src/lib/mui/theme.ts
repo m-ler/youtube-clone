@@ -1,5 +1,5 @@
 import { createTheme } from '@mui/material'
-import { grey, purple } from '@mui/material/colors'
+import { grey } from '@mui/material/colors'
 import { Roboto_Flex } from 'next/font/google'
 
 const roboto = Roboto_Flex({ subsets: ['latin'], weight: ['100', '300', '400', '500', '700', '900'] })
