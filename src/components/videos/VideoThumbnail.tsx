@@ -1,15 +1,17 @@
 import { formatISO8601Duration } from '@/lib/moment/utils'
+import { getFormattedVideoData } from '@/lib/utils/youtube'
 import { Box, Typography, alpha } from '@mui/material'
 import { youtube_v3 } from 'googleapis'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useMemo } from 'react'
 
 type Props = {
 	video: youtube_v3.Schema$Video
 }
 
 const VideoThumbnail = ({ video }: Props) => {
-	const videoId = typeof video.id === 'string' ? video.id : (video.id as unknown as { videoId: string }).videoId
+	const { videoId } = useMemo(() => getFormattedVideoData(video), [video.id])
 	const duration = formatISO8601Duration(video.contentDetails?.duration || '')
 
 	return (

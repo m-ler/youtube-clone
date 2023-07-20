@@ -2,34 +2,20 @@
 import { Box, Card, IconButton, Stack, Tooltip, Typography, Link as MUILink } from '@mui/material'
 import { grey } from '@mui/material/colors'
 import { youtube_v3 } from 'googleapis'
-import moment from 'moment'
 import VideoThumbnail from './VideoThumbnail'
 import { MoreVert } from '@mui/icons-material'
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import MoreMenu from './MoreMenu'
 import Link from 'next/link'
+import { getFormattedVideoData } from '@/lib/utils/youtube'
 
 type Props = {
 	video: youtube_v3.Schema$Video
 }
 
-const formatNumber = new Intl.NumberFormat('en', {
-	notation: 'compact',
-	compactDisplay: 'short',
-	maximumSignificantDigits: 3,
-}).format
-
 const HorizontalVideoCard = ({ video }: Props) => {
-	const timeAgo = moment(video.snippet?.publishedAt).fromNow().replace(/^a/, '1')
-	const viewCount = video.statistics?.viewCount
+	const { videoId, timeAgo, viewCount, views } = useMemo(() => getFormattedVideoData(video), [video.id])
 	const [menuButton, setMenuButton] = useState<HTMLElement | null>(null)
-
-	const videoId = typeof video.id === 'string' ? video.id : (video.id as unknown as { videoId: string }).videoId
-
-	const views =
-		viewCount === '0'
-			? 'No views'
-			: `${formatNumber(parseInt(viewCount || '0'))} ${viewCount === '1' ? 'view' : 'views'}`
 
 	return (
 		<Card
