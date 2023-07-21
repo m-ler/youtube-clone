@@ -15,7 +15,13 @@ const Watch = ({ videoId }: Props) => {
 
 	return (
 		<Container maxWidth={false} sx={{ maxWidth: 'min(100%,1765px)', width: '100%', pt: 3, px: 3 }}>
-			<Box sx={{ display: 'grid', gridTemplateColumns: '2.95fr 1fr', gridTemplateRows: 'auto 1fr' }}>
+			<Box
+				sx={{
+					display: 'grid',
+					gridTemplateColumns: { xs: '1fr', md: '2.95fr 1fr' },
+					gridTemplateRows: { xs: 'auto auto auto', md: 'auto 1fr' },
+				}}
+			>
 				<Box
 					maxWidth="100%"
 					height="auto"
@@ -26,11 +32,17 @@ const Watch = ({ videoId }: Props) => {
 				>
 					<VideoEmbed videoId={videoId} />
 				</Box>
-				<Box maxWidth="100%" gridColumn="2/3" gridRow="1/3" pl={2} pr={4}>
-					<VideoListSkeleton />
-				</Box>
 				<Box gridColumn="1/2" gridRow="2/3" pt={2} pb={4} overflow="hidden">
 					{videoMetadata}
+				</Box>
+				<Box
+					maxWidth="100%"
+					gridColumn={{ xs: ' 1/2', md: '2/3' }}
+					gridRow={{ sm: '3/4', md: '1/3' }}
+					pl={{ xs: 0, md: 2 }}
+					pr={{ xs: 0, md: 4 }}
+				>
+					<VideoListSkeleton />
 				</Box>
 			</Box>
 		</Container>

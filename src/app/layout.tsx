@@ -13,7 +13,7 @@ export const metadata = {
 const RootLayout = ({ children }: PropsWithChildren) => {
 	return (
 		<html lang="en">
-			<body className={roboto.className} style={{ margin: 0 }}>
+			<body className={roboto.className} style={{ margin: 0, minWidth: 320 }}>
 				<Providers>{children}</Providers>
 			</body>
 		</html>
