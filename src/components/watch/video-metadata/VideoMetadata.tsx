@@ -2,6 +2,7 @@ import VideoMetadataCard from './VideoMetadataCard'
 import { SITE_BASE_URL } from '@/config'
 import { youtube_v3 } from 'googleapis'
 import { Suspense } from 'react'
+import VideoMetadataSkeleton from './VideoMetadataSkeleton'
 
 type Props = {
 	videoId: string
@@ -28,6 +29,7 @@ const getChannel = async (channelId: string) => {
 }
 
 const Component = async ({ videoId }: Props) => {
+	await new Promise((resolve) => setTimeout(resolve, 1000))
 	const video = videoMock.items?.[0] // await getVideo(videoId)
 	const channel = channelMock.items?.[0] // video?.snippet?.channelId ? await getChannel(video.snippet.channelId) : null
 	return video ? <VideoMetadataCard video={video} channel={channel} /> : <></>
@@ -35,7 +37,7 @@ const Component = async ({ videoId }: Props) => {
 
 const VideoMetadata = ({ videoId }: Props) => {
 	return (
-		<Suspense fallback="Loading...">
+		<Suspense fallback={<VideoMetadataSkeleton />}>
 			<Component videoId={videoId} />
 		</Suspense>
 	)

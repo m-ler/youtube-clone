@@ -20,16 +20,15 @@ const DescriptionBox = ({ video, channel, subs, timeAgo }: Props) => {
 
 	return (
 		<Box display="flex" flexDirection="column" bgcolor={grey[200]} p={1.5} borderRadius={3} position="relative">
-			{collapsed && (
-				<Button
-					sx={{ position: 'absolute', inset: 0, borderRadius: 3 }}
-					aria-label="expand description"
-					onClick={() => setCollapsed(false)}
-				></Button>
-			)}
+			<Button
+				disabled={!collapsed}
+				sx={{ position: 'absolute', inset: 0, borderRadius: 3 }}
+				aria-label="expand description"
+				onClick={() => setCollapsed(false)}
+			></Button>
 			<Typography fontSize={14} fontWeight="500">
 				{`${views.toLocaleString()} ${views === 1 ? 'view' : 'views'}`}
-				<Typography display="inline" fontSize={14} ml={1} fontWeight="500">
+				<Typography display="inline" fontSize={14} ml={1} fontWeight="500" component="span">
 					{collapsed ? timeAgo : date}
 				</Typography>
 			</Typography>
