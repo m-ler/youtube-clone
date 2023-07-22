@@ -2,24 +2,23 @@
 
 import VideoEmbed from '@/components/VideoEmbed'
 import VideoListSkeleton from '@/components/videos/VideoListSkeleton'
-import VideoMetadata from '@/components/watch/video-metadata'
 import { Box, Container } from '@mui/material'
-import { useMemo } from 'react'
+import { ReactNode } from 'react'
 
 type Props = {
 	videoId: string
+	videoMetadata: ReactNode
+	comments: ReactNode
 }
 
-const Watch = ({ videoId }: Props) => {
-	const videoMetadata = useMemo(() => <VideoMetadata videoId={videoId} />, [videoId])
-
+const Watch = ({ videoId, videoMetadata, comments }: Props) => {
 	return (
 		<Container maxWidth={false} sx={{ maxWidth: 'min(100%,1765px)', width: '100%', pt: 3, px: 3 }}>
 			<Box
 				sx={{
 					display: 'grid',
 					gridTemplateColumns: { xs: '1fr', md: '2.95fr 1fr' },
-					gridTemplateRows: { xs: 'auto auto auto', md: 'auto 1fr' },
+					gridTemplateRows: { xs: 'auto auto auto 1fr', md: 'auto auto 1fr' },
 				}}
 			>
 				<Box
@@ -38,11 +37,14 @@ const Watch = ({ videoId }: Props) => {
 				<Box
 					maxWidth="100%"
 					gridColumn={{ xs: ' 1/2', md: '2/3' }}
-					gridRow={{ sm: '3/4', md: '1/3' }}
+					gridRow={{ sm: '3/4', md: '1/4' }}
 					pl={{ xs: 0, md: 2 }}
 					pr={{ xs: 0, md: 4 }}
 				>
 					<VideoListSkeleton />
+				</Box>
+				<Box width="100%" height="100%" gridColumn="1/2" gridRow={{ sm: '4/5', md: '3/4' }} pb={2}>
+					{comments}
 				</Box>
 			</Box>
 		</Container>

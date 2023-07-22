@@ -1,3 +1,5 @@
+'use client'
+
 import { getFormattedChannelData, getFormattedVideoData } from '@/lib/utils/youtube'
 import { Button, Stack, Typography } from '@mui/material'
 import { youtube_v3 } from 'googleapis'

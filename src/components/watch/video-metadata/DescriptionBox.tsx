@@ -1,3 +1,5 @@
+'use client'
+
 import { Box, Button, Divider, Stack, Typography, alpha } from '@mui/material'
 import { grey } from '@mui/material/colors'
 import { youtube_v3 } from 'googleapis'
