@@ -7,6 +7,7 @@ import { useMemo } from 'react'
 import ActionButtons from './ActionButtons'
 import ChannelAvatar from './ChannelAvatar'
 import DescriptionBox from './DescriptionBox'
+import useDocumentTitle from '@/hooks/useDocumentTitle'
 
 type Props = {
 	video: youtube_v3.Schema$Video
@@ -16,6 +17,7 @@ type Props = {
 const VideoMetadataCard = ({ video, channel }: Props) => {
 	const { likes, timeAgo } = useMemo(() => getFormattedVideoData(video), [video?.id])
 	const { channelName, subs } = useMemo(() => getFormattedChannelData(channel || {}), [channel?.id])
+	useDocumentTitle(video.snippet?.title ? `${video.snippet.title} - Youtube` : 'Youtube')
 
 	return (
 		<Stack overflow="hidden" maxWidth="100%" spacing={1.5}>
