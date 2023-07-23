@@ -52,15 +52,26 @@ const VideoCard = ({ video }: Props) => {
 					</MUILink>
 
 					<Tooltip title={video.snippet?.channelTitle} placement="top">
-						<Typography
+						<MUILink
+							href={`/channel/${video.snippet?.channelId}`}
+							component={Link}
 							fontSize={14}
-							mt={0.4}
+							my={0.4}
 							color={grey[700]}
 							mr="auto"
-							sx={{ overflow: 'hidden', WebkitBoxOrient: 'vertical', display: '-webkit-box', WebkitLineClamp: 1 }}
+							sx={{
+								overflow: 'hidden',
+								WebkitBoxOrient: 'vertical',
+								display: '-webkit-box',
+								WebkitLineClamp: 1,
+								textDecoration: 'none',
+								'&:hover': {
+									color: grey[900],
+								},
+							}}
 						>
 							{video.snippet?.channelTitle}
-						</Typography>
+						</MUILink>
 					</Tooltip>
 					<Typography fontSize={14} color={grey[700]}>
 						{viewCount && (

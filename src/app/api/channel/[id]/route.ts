@@ -12,7 +12,7 @@ export const GET = async (req: NextRequest, { params }: Params) => {
 
 	try {
 		const res = await youtubeClient.channels.list({
-			part: ['snippet,contentDetails,statistics'],
+			part: ['snippet,contentDetails,statistics,brandingSettings'],
 			id: [id],
 		})
 

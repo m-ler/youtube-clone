@@ -38,10 +38,18 @@ export const getFormattedChannelData = (channel: youtube_v3.Schema$Channel) => {
 			? 'No views'
 			: `${formatNumber(parseInt(subsCount || '0'))} ${subsCount === '1' ? 'subscriber' : 'subscribers'}`
 
+	const videoCount = channel?.statistics?.videoCount
+	const videos =
+		subsCount === '0'
+			? 'No views'
+			: `${formatNumber(parseInt(videoCount || '0'))} ${videoCount === '1' ? 'video' : 'videos'}`
+
 	return {
 		channelName,
 		subsCount,
 		subs,
+		videoCount,
+		videos,
 	}
 }
 
