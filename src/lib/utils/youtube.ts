@@ -44,3 +44,27 @@ export const getFormattedChannelData = (channel: youtube_v3.Schema$Channel) => {
 		subs,
 	}
 }
+
+export const getFormattedCommentData = (comment: youtube_v3.Schema$CommentThread) => {
+	const likesCount = comment.snippet?.topLevelComment?.snippet?.likeCount || 0
+	const likes = formatNumber(likesCount)
+	const timeAgo = moment(comment.snippet?.topLevelComment?.snippet?.publishedAt).fromNow().replace(/^a/, '1')
+
+	return {
+		likesCount,
+		likes,
+		timeAgo,
+	}
+}
+
+export const getFormattedReplyData = (comment: youtube_v3.Schema$Comment) => {
+	const likesCount = comment.snippet?.likeCount || 0
+	const likes = formatNumber(likesCount)
+	const timeAgo = moment(comment.snippet?.publishedAt).fromNow().replace(/^a/, '1')
+
+	return {
+		likesCount,
+		likes,
+		timeAgo,
+	}
+}
