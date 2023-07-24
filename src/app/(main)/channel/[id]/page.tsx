@@ -1,12 +1,12 @@
 import { SITE_BASE_URL } from '@/config'
-import Channel from './Channel'
 import { youtube_v3 } from 'googleapis'
+import ChannelVideos from './ChannelVideos'
 
-const getChannel = async (channelId: string) => {
+const getChannelVideos = async (channelId: string) => {
 	try {
-		const res = await fetch(`${SITE_BASE_URL}/api/channel/${channelId}`)
-		const data = (await res.json()) as youtube_v3.Schema$ChannelListResponse
-		return data.items?.[0] || null
+		const res = await fetch(`${SITE_BASE_URL}/api/videos/channel/${channelId}`)
+		const data = (await res.json()) as youtube_v3.Schema$VideoListResponse
+		return data.items || null
 	} catch (error) {
 		return null
 	}
@@ -17,10 +17,11 @@ type Props = {
 		id: string
 	}
 }
-
 const Page = async ({ params }: Props) => {
-	const channel = await getChannel(params.id)
-	return channel ? <Channel channel={channel} /> : <>Channel not found.</>
+	const { id } = params
+	const channelVideos = await getChannelVideos(id)
+
+	return <ChannelVideos videos={channelVideos || []} />
 }
 
 export default Page

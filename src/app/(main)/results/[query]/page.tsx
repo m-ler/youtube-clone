@@ -5,7 +5,6 @@ import { youtube_v3 } from 'googleapis'
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
 	const query = params.query || ''
-	console.log(params)
 
 	return {
 		title: query ? `${decodeURIComponent(query)} - Youtube` : 'Youtube',
