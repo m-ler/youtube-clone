@@ -53,7 +53,7 @@ const VideoCard = ({ video }: Props) => {
 
 					<Tooltip title={video.snippet?.channelTitle} placement="top">
 						<MUILink
-							href={`/channel/${video.snippet?.channelId}`}
+							href={`/channel/${video.snippet?.channelId}/videos`}
 							component={Link}
 							fontSize={14}
 							my={0.4}

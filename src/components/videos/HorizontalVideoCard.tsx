@@ -76,7 +76,8 @@ const HorizontalVideoCard = ({ video }: Props) => {
 					{timeAgo}
 				</Typography>
 				<Tooltip title={video.snippet?.channelTitle} placement="top">
-					<Typography
+					<MUILink
+						href={`/channel/${video.snippet?.channelId}/videos`}
 						fontSize={14}
 						mt={0.4}
 						color={grey[700]}
@@ -84,7 +85,7 @@ const HorizontalVideoCard = ({ video }: Props) => {
 						sx={{ overflow: 'hidden', WebkitBoxOrient: 'vertical', display: '-webkit-box', WebkitLineClamp: 1 }}
 					>
 						{video.snippet?.channelTitle}
-					</Typography>
+					</MUILink>
 				</Tooltip>
 				<Typography
 					fontSize={14}
