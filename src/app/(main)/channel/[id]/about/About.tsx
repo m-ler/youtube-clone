@@ -19,7 +19,7 @@ const About = ({ channel }: Props) => {
 				<Box>
 					<Typography>Description</Typography>
 					<Typography mt={2} fontSize={14} whiteSpace="pre-line">
-						{channel.snippet?.description}
+						{channel.snippet?.description || '-'}
 					</Typography>
 				</Box>
 			</Grid>

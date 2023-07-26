@@ -1,7 +1,7 @@
 'use client'
 import { stringAvatar, stringToColor } from '@/lib/utils/avatar'
 import { KeyboardArrowDown, KeyboardArrowUp, ThumbDownOutlined, ThumbUpOffAltOutlined } from '@mui/icons-material'
-import { Avatar, Box, Button, IconButton, Stack, Tooltip, Typography } from '@mui/material'
+import { Avatar, Box, Button, IconButton, Link, Stack, Tooltip, Typography, Link as MUILink } from '@mui/material'
 import { youtube_v3 } from 'googleapis'
 import Reply from './Reply'
 import { useState } from 'react'
@@ -14,24 +14,33 @@ type Props = {
 const Comment = ({ comment }: Props) => {
 	const replyCount = comment.replies?.comments?.length || 0
 	const [showReplies, setShowReplies] = useState(false)
-	const { likes, likesCount, timeAgo } = getFormattedCommentData(comment)
+	const { likes, likesCount, timeAgo, channelId } = getFormattedCommentData(comment)
 
 	return (
 		<Stack key={comment.id} direction="row" spacing={2}>
-			<Avatar
-				src={comment.snippet?.topLevelComment?.snippet?.authorProfileImageUrl || ''}
-				sx={{ bgcolor: stringToColor(comment.snippet?.topLevelComment?.snippet?.authorDisplayName || '') }}
-				alt={comment.snippet?.topLevelComment?.snippet?.authorDisplayName || ''}
-			>
-				{stringAvatar(comment.snippet?.topLevelComment?.snippet?.authorProfileImageUrl || '')}
-			</Avatar>
+			<Link href={`/channel/${channelId}/videos`}>
+				<Avatar
+					src={comment.snippet?.topLevelComment?.snippet?.authorProfileImageUrl || ''}
+					sx={{ bgcolor: stringToColor(comment.snippet?.topLevelComment?.snippet?.authorDisplayName || '') }}
+					alt={comment.snippet?.topLevelComment?.snippet?.authorDisplayName || ''}
+				>
+					{stringAvatar(comment.snippet?.topLevelComment?.snippet?.authorProfileImageUrl || '')}
+				</Avatar>
+			</Link>
+
 			<Box display="flex" flexDirection="column">
-				<Typography fontSize={13} fontWeight="500">
+				<MUILink
+					component={Link}
+					href={`/channel/${channelId}/videos`}
+					fontSize={13}
+					fontWeight="500"
+					sx={{ textDecoration: 'none' }}
+				>
 					{comment.snippet?.topLevelComment?.snippet?.authorDisplayName || ''}
 					<Typography component="span" fontSize={12} color="text.secondary" pl={1}>
 						{timeAgo}
 					</Typography>
-				</Typography>
+				</MUILink>
 				<Typography fontSize={14} fontWeight="300" mt={0.25}>
 					{comment.snippet?.topLevelComment?.snippet?.textOriginal || ''}
 				</Typography>

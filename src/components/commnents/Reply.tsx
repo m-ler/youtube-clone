@@ -2,7 +2,7 @@
 import { stringAvatar, stringToColor } from '@/lib/utils/avatar'
 import { getFormattedReplyData } from '@/lib/utils/youtube'
 import { ThumbDownOutlined, ThumbUpOffAltOutlined } from '@mui/icons-material'
-import { Avatar, Box, Button, IconButton, Stack, Tooltip, Typography } from '@mui/material'
+import { Avatar, Box, Button, IconButton, Link, Stack, Tooltip, Typography, Link as MUILink } from '@mui/material'
 import { youtube_v3 } from 'googleapis'
 
 type Props = {
@@ -10,24 +10,32 @@ type Props = {
 }
 
 const Reply = ({ reply }: Props) => {
-	const { likes, likesCount, timeAgo } = getFormattedReplyData(reply)
+	const { likes, likesCount, timeAgo, channelId } = getFormattedReplyData(reply)
 
 	return (
 		<Stack key={reply.id} direction="row" spacing={2}>
-			<Avatar
-				src={reply?.snippet?.authorProfileImageUrl || ''}
-				sx={{ bgcolor: stringToColor(reply?.snippet?.authorDisplayName || ''), width: 24, height: 24 }}
-				alt={reply?.snippet?.authorDisplayName || ''}
-			>
-				{stringAvatar(reply?.snippet?.authorProfileImageUrl || '')}
-			</Avatar>
+			<Link href={`/channel/${channelId}/videos`}>
+				<Avatar
+					src={reply?.snippet?.authorProfileImageUrl || ''}
+					sx={{ bgcolor: stringToColor(reply?.snippet?.authorDisplayName || ''), width: 24, height: 24 }}
+					alt={reply?.snippet?.authorDisplayName || ''}
+				>
+					{stringAvatar(reply?.snippet?.authorProfileImageUrl || '')}
+				</Avatar>
+			</Link>
 			<Box display="flex" flexDirection="column">
-				<Typography fontSize={13} fontWeight="500">
+				<MUILink
+					component={Link}
+					href={`/channel/${channelId}/videos`}
+					fontSize={13}
+					fontWeight="500"
+					sx={{ textDecoration: 'none' }}
+				>
 					{reply?.snippet?.authorDisplayName || ''}
 					<Typography component="span" fontSize={12} color="text.secondary" pl={1}>
 						{timeAgo}
 					</Typography>
-				</Typography>
+				</MUILink>
 				<Typography fontSize={14} fontWeight="300" mt={0.25}>
 					{reply?.snippet?.textOriginal || ''}
 				</Typography>

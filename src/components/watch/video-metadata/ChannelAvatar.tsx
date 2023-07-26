@@ -1,5 +1,5 @@
 import { stringAvatar, stringToColor } from '@/lib/utils/avatar'
-import { Avatar, Box, Stack, Tooltip, Typography } from '@mui/material'
+import { Avatar, Box, Link, Stack, Tooltip, Typography, Link as MUILInk } from '@mui/material'
 import { grey } from '@mui/material/colors'
 import { youtube_v3 } from 'googleapis'
 
@@ -13,16 +13,20 @@ type Props = {
 const ChannelAvatar = ({ channel, channelName, subs, avatarSize }: Props) => {
 	return (
 		<Stack direction="row" alignItems="center">
-			<Avatar
-				src={channel?.snippet?.thumbnails?.default?.url || ''}
-				sx={{ bgcolor: stringToColor(channelName), width: avatarSize || 40, height: avatarSize || 40 }}
-				alt={channelName}
-			>
-				{stringAvatar(channelName)}
-			</Avatar>
+			<Link href={`/channel/${channel?.id}/videos`}>
+				<Avatar
+					src={channel?.snippet?.thumbnails?.default?.url || ''}
+					sx={{ bgcolor: stringToColor(channelName), width: avatarSize || 40, height: avatarSize || 40 }}
+					alt={channelName}
+				>
+					{stringAvatar(channelName)}
+				</Avatar>
+			</Link>
 			<Box ml={1.5} overflow="hidden" pr={2}>
 				<Tooltip title={channelName} placement="top">
-					<Typography
+					<MUILInk
+						component={Link}
+						href={`/channel/${channel?.id}/videos`}
 						maxWidth="100%"
 						fontSize={16}
 						fontWeight="600"
@@ -31,9 +35,10 @@ const ChannelAvatar = ({ channel, channelName, subs, avatarSize }: Props) => {
 						whiteSpace="nowrap"
 						textOverflow="ellipsis"
 						overflow="hidden"
+						sx={{ textDecoration: 'none' }}
 					>
 						{channelName}
-					</Typography>
+					</MUILInk>
 				</Tooltip>
 				<Typography
 					fontSize={12}
