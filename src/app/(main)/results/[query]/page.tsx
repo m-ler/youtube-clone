@@ -12,13 +12,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 const getResults = async (query: string) => {
-	try {
-		const res = await fetch(`${SITE_BASE_URL}/api/search/${query}`)
-		const data = (await res.json()) as youtube_v3.Schema$VideoListResponse
-		return data.items
-	} catch (error) {
-		return []
-	}
+	const res = await fetch(`${SITE_BASE_URL}/api/search/${query}`)
+	const data = (await res.json()) as youtube_v3.Schema$VideoListResponse
+	return data.items
 }
 
 type Props = {
