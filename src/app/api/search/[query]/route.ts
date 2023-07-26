@@ -28,7 +28,7 @@ export const GET = async (req: NextRequest, { params }: Params) => {
 			type: ['video'],
 		})
 
-		return NextResponse.json(res)
+		return NextResponse.json(res.data)
 	} catch (error) {
 		throw error
 	}

@@ -2,8 +2,9 @@
 
 import { getFormattedChannelData } from '@/lib/utils/youtube'
 import { KeyboardArrowRightOutlined } from '@mui/icons-material'
-import { Avatar, Box, Typography } from '@mui/material'
+import { Avatar, Box, Typography, Link as MUILink } from '@mui/material'
 import { youtube_v3 } from 'googleapis'
+import Link from 'next/link'
 
 type Props = {
 	channel: youtube_v3.Schema$Channel
@@ -19,7 +20,7 @@ const ChannelHeaderCard = ({ channel }: Props) => {
 				src={channel.snippet?.thumbnails?.high?.url || ''}
 				sx={{ width: '128px', height: '128px', display: { xs: 'none', sm: 'flex' } }}
 			></Avatar>
-			<Box display="flex" flexDirection="column" justifyContent="center" ml={2.5}>
+			<Box display="flex" flexDirection="column" justifyContent="center" ml={{ xs: 0, sm: 2.5 }}>
 				<Typography component="h1" fontSize={24}>
 					{channelName}
 				</Typography>
@@ -33,7 +34,9 @@ const ChannelHeaderCard = ({ channel }: Props) => {
 					</Typography>
 				</Typography>
 				<Box display="flex" alignItems="center" mt={1}>
-					<Typography
+					<MUILink
+						component={Link}
+						href="about"
 						fontSize={14}
 						color="text.secondary"
 						display="flex"
@@ -49,7 +52,7 @@ const ChannelHeaderCard = ({ channel }: Props) => {
 						}}
 					>
 						{channel.snippet?.description || 'More about this channel'}
-					</Typography>
+					</MUILink>
 					<KeyboardArrowRightOutlined />
 				</Box>
 			</Box>

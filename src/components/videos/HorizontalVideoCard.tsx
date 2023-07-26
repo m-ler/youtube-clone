@@ -8,6 +8,7 @@ import { useMemo, useState } from 'react'
 import MoreMenu from './MoreMenu'
 import Link from 'next/link'
 import { getFormattedVideoData } from '@/lib/utils/youtube'
+import { decode } from 'html-entities'
 
 type Props = {
 	video: youtube_v3.Schema$Video
@@ -52,7 +53,7 @@ const HorizontalVideoCard = ({ video }: Props) => {
 							textDecoration: 'none',
 						}}
 					>
-						{video.snippet?.title}
+						{decode(video.snippet?.title)}
 					</MUILink>
 					<IconButton
 						className="more-menu"
@@ -82,7 +83,13 @@ const HorizontalVideoCard = ({ video }: Props) => {
 						mt={0.4}
 						color={grey[700]}
 						mr="auto"
-						sx={{ overflow: 'hidden', WebkitBoxOrient: 'vertical', display: '-webkit-box', WebkitLineClamp: 1 }}
+						sx={{
+							overflow: 'hidden',
+							WebkitBoxOrient: 'vertical',
+							display: '-webkit-box',
+							WebkitLineClamp: 1,
+							textDecoration: 'none',
+						}}
 					>
 						{video.snippet?.channelTitle}
 					</MUILink>

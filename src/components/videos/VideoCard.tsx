@@ -8,6 +8,7 @@ import { useMemo, useState } from 'react'
 import MoreMenu from './MoreMenu'
 import Link from 'next/link'
 import { getFormattedVideoData } from '@/lib/utils/youtube'
+import { decode } from 'html-entities'
 
 type Props = {
 	video: youtube_v3.Schema$Video
@@ -48,7 +49,7 @@ const VideoCard = ({ video }: Props) => {
 							textDecoration: 'none',
 						}}
 					>
-						{video.snippet?.title}
+						<>{decode(video.snippet?.title)}</>
 					</MUILink>
 
 					<Tooltip title={video.snippet?.channelTitle} placement="top">

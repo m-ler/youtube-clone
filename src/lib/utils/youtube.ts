@@ -9,7 +9,7 @@ const formatNumber = new Intl.NumberFormat('en', {
 
 export const getFormattedVideoData = (video: youtube_v3.Schema$Video) => {
 	const videoId = typeof video.id === 'string' ? video.id : (video.id as unknown as { videoId: string }).videoId
-	const timeAgo = moment(video.snippet?.publishedAt).fromNow().replace(/^a/, '1')
+	const timeAgo = moment(video.snippet?.publishedAt).fromNow()
 
 	const viewCount = video.statistics?.viewCount
 	const views =
@@ -56,7 +56,7 @@ export const getFormattedChannelData = (channel: youtube_v3.Schema$Channel) => {
 export const getFormattedCommentData = (comment: youtube_v3.Schema$CommentThread) => {
 	const likesCount = comment.snippet?.topLevelComment?.snippet?.likeCount || 0
 	const likes = formatNumber(likesCount)
-	const timeAgo = moment(comment.snippet?.topLevelComment?.snippet?.publishedAt).fromNow().replace(/^a/, '1')
+	const timeAgo = moment(comment.snippet?.topLevelComment?.snippet?.publishedAt).fromNow()
 
 	return {
 		likesCount,
@@ -68,7 +68,7 @@ export const getFormattedCommentData = (comment: youtube_v3.Schema$CommentThread
 export const getFormattedReplyData = (comment: youtube_v3.Schema$Comment) => {
 	const likesCount = comment.snippet?.likeCount || 0
 	const likes = formatNumber(likesCount)
-	const timeAgo = moment(comment.snippet?.publishedAt).fromNow().replace(/^a/, '1')
+	const timeAgo = moment(comment.snippet?.publishedAt).fromNow()
 
 	return {
 		likesCount,
