@@ -1,7 +1,7 @@
-import YoutubeIcon from '@/assets/svgr/YoutubeIcon';
-import YoutubeKids from '@/assets/svgr/YoutubeKids';
-import YoutubeMusic from '@/assets/svgr/YoutubeMusic';
-import { NavItem } from '@/types';
+import YoutubeIcon from '@/assets/svgr/YoutubeIcon'
+import YoutubeKids from '@/assets/svgr/YoutubeKids'
+import YoutubeMusic from '@/assets/svgr/YoutubeMusic'
+import { NavItem } from '@/types'
 import {
 	AddCircle,
 	AddCircleOutline,
@@ -37,7 +37,7 @@ import {
 	VideoLibraryOutlined,
 	VideogameAsset,
 	VideogameAssetOutlined,
-} from '@mui/icons-material';
+} from '@mui/icons-material'
 
 export const mainNavigation = {
 	main: [
@@ -49,13 +49,13 @@ export const mainNavigation = {
 		},
 		{
 			name: 'Shorts',
-			href: '/shorts',
+			href: '#',
 			icon: <OfflineBoltOutlined />,
 			selectedIcon: <OfflineBolt />,
 		},
 		{
 			name: 'Subscriptions',
-			href: '/feed/subscriptions',
+			href: '#',
 			icon: <SubscriptionsOutlined />,
 			selectedIcon: <Subscriptions />,
 		},
@@ -63,13 +63,13 @@ export const mainNavigation = {
 	user: [
 		{
 			name: 'Library',
-			href: '/feed/library',
+			href: '#',
 			icon: <VideoLibraryOutlined />,
 			selectedIcon: <VideoLibrary />,
 		},
 		{
 			name: 'History',
-			href: '/feed/history',
+			href: '#',
 			icon: <RestoreOutlined />,
 			selectedIcon: <Restore />,
 		},
@@ -77,43 +77,43 @@ export const mainNavigation = {
 	explore: [
 		{
 			name: 'Trending',
-			href: '/feed/trending',
+			href: '#',
 			icon: <LocalFireDepartmentOutlined />,
 			selectedIcon: <LocalFireDepartment />,
 		},
 		{
 			name: 'Music',
-			href: '/channel/UC-9-kyTW8ZkZNDHQJ6FgpwQ',
+			href: '#',
 			icon: <MusicNoteOutlined />,
 			selectedIcon: <MusicNote />,
 		},
 		{
 			name: 'Live',
-			href: '/channel/UC4R8DWoMoI7CAwX8_LjQHig',
+			href: '#',
 			icon: <SensorsOutlined />,
 			selectedIcon: <Sensors />,
 		},
 		{
 			name: 'Gaming',
-			href: '/gaming',
+			href: '#',
 			icon: <VideogameAssetOutlined />,
 			selectedIcon: <VideogameAsset />,
 		},
 		{
 			name: 'News',
-			href: '/channel/UCYfdidRxbB8Qhf0Nx7ioOYw',
+			href: '#',
 			icon: <NewspaperOutlined />,
 			selectedIcon: <Newspaper />,
 		},
 		{
 			name: 'Sports',
-			href: '/channel/UCEgdi0XIXXZ-qJOFPf4JSKw',
+			href: '#',
 			icon: <EmojiEventsOutlined />,
 			selectedIcon: <EmojiEvents />,
 		},
 		{
 			name: 'Learning',
-			href: '/channel/UCtFRv9O2AHqOZjjynzrv-xg',
+			href: '#',
 			icon: <LightbulbOutlined />,
 			selectedIcon: <Lightbulb />,
 		},
@@ -121,7 +121,7 @@ export const mainNavigation = {
 	browse: [
 		{
 			name: 'Browser channels',
-			href: '/feed/guide_builder',
+			href: '#',
 			icon: <AddCircleOutline />,
 			selectedIcon: <AddCircle />,
 		},
@@ -172,7 +172,7 @@ export const mainNavigation = {
 			selectedIcon: <Feedback />,
 		},
 	] as NavItem[],
-};
+}
 
 export const collapsedNavigation = [
 	{
@@ -183,28 +183,28 @@ export const collapsedNavigation = [
 	},
 	{
 		name: 'Shorts',
-		href: '/shorts',
+		href: '#',
 		icon: <OfflineBoltOutlined />,
 		selectedIcon: <OfflineBolt />,
 	},
 	{
 		name: 'Subscriptions',
-		href: '/feed/subscriptions',
+		href: '#',
 		icon: <SubscriptionsOutlined />,
 		selectedIcon: <Subscriptions />,
 	},
 	{
 		name: 'Library',
-		href: '/feed/library',
+		href: '#',
 		icon: <VideoLibraryOutlined />,
 		selectedIcon: <VideoLibrary />,
 	},
-] as NavItem[];
+] as NavItem[]
 
 type FooterNavItem = {
-	name: string;
-	href: string;
-};
+	name: string
+	href: string
+}
 
 export const footerNavigation = {
 	primary: [
@@ -259,4 +259,4 @@ export const footerNavigation = {
 			href: 'https://www.youtube.com/new',
 		},
 	] as FooterNavItem[],
-};
+}
