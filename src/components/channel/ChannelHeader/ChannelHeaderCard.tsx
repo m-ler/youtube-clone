@@ -18,7 +18,7 @@ const ChannelHeaderCard = ({ channel }: Props) => {
 			<Avatar
 				alt={channelName}
 				src={channel.snippet?.thumbnails?.high?.url || ''}
-				sx={{ width: '128px', height: '128px', display: { xs: 'none', sm: 'flex' } }}
+				sx={{ width: '128px', height: '128px', fontSize: 42, display: { xs: 'none', sm: 'flex' } }}
 			></Avatar>
 			<Box display="flex" flexDirection="column" justifyContent="center" ml={{ xs: 0, sm: 2.5 }}>
 				<Typography component="h1" fontSize={24}>
