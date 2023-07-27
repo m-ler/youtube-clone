@@ -11,7 +11,7 @@ type Props = {
 const ChannelVideos = ({ videos }: Props) => {
 	return (
 		<Box p={2} py={3}>
-			<VideoGrid videos={videos} />
+			<VideoGrid videos={videos} hideChannelName />
 		</Box>
 	)
 }

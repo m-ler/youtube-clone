@@ -12,9 +12,10 @@ import { decode } from 'html-entities'
 
 type Props = {
 	video: youtube_v3.Schema$Video
+	hideChannelName?: boolean
 }
 
-const VideoCard = ({ video }: Props) => {
+const VideoCard = ({ video, hideChannelName }: Props) => {
 	const [menuButton, setMenuButton] = useState<HTMLElement | null>(null)
 	const { videoId, timeAgo, viewCount, views } = useMemo(() => getFormattedVideoData(video), [video.id])
 
@@ -51,29 +52,31 @@ const VideoCard = ({ video }: Props) => {
 					>
 						<>{decode(video.snippet?.title)}</>
 					</MUILink>
+					{!hideChannelName && (
+						<Tooltip title={video.snippet?.channelTitle} placement="top">
+							<MUILink
+								href={`/channel/${video.snippet?.channelId}/videos`}
+								component={Link}
+								fontSize={14}
+								my={0.4}
+								color={grey[700]}
+								mr="auto"
+								sx={{
+									overflow: 'hidden',
+									WebkitBoxOrient: 'vertical',
+									display: '-webkit-box',
+									WebkitLineClamp: 1,
+									textDecoration: 'none',
+									'&:hover': {
+										color: grey[900],
+									},
+								}}
+							>
+								{video.snippet?.channelTitle}
+							</MUILink>
+						</Tooltip>
+					)}
 
-					<Tooltip title={video.snippet?.channelTitle} placement="top">
-						<MUILink
-							href={`/channel/${video.snippet?.channelId}/videos`}
-							component={Link}
-							fontSize={14}
-							my={0.4}
-							color={grey[700]}
-							mr="auto"
-							sx={{
-								overflow: 'hidden',
-								WebkitBoxOrient: 'vertical',
-								display: '-webkit-box',
-								WebkitLineClamp: 1,
-								textDecoration: 'none',
-								'&:hover': {
-									color: grey[900],
-								},
-							}}
-						>
-							{video.snippet?.channelTitle}
-						</MUILink>
-					</Tooltip>
 					<Typography fontSize={14} color={grey[700]}>
 						{viewCount && (
 							<>
