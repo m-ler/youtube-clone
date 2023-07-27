@@ -12,9 +12,10 @@ import { decode } from 'html-entities'
 
 type Props = {
 	video: youtube_v3.Schema$Video
+	dense?: boolean
 }
 
-const HorizontalVideoCard = ({ video }: Props) => {
+const HorizontalVideoCard = ({ video, dense }: Props) => {
 	const { videoId, timeAgo, viewCount, views } = useMemo(() => getFormattedVideoData(video), [video.id])
 	const [menuButton, setMenuButton] = useState<HTMLElement | null>(null)
 
@@ -31,8 +32,8 @@ const HorizontalVideoCard = ({ video }: Props) => {
 			}}
 			elevation={0}
 		>
-			<Box maxWidth={360} minWidth={240}>
-				<VideoThumbnail video={video} />
+			<Box maxWidth={dense ? 168 : 360} minWidth={dense ? 168 : 240}>
+				<VideoThumbnail video={video} borderRadius={dense ? 'small' : 'medium'} />
 			</Box>
 
 			<Box width="90%" display="flex" flexDirection="column" flexGrow={1} mr="auto">
@@ -64,7 +65,11 @@ const HorizontalVideoCard = ({ video }: Props) => {
 					</IconButton>
 				</Stack>
 
-				<Typography fontSize={14} color={grey[700]}>
+				<Typography
+					fontSize={14}
+					color={grey[700]}
+					sx={{ overflow: 'hidden', WebkitBoxOrient: 'vertical', display: '-webkit-box', WebkitLineClamp: 1 }}
+				>
 					{viewCount && (
 						<>
 							{views}
@@ -94,15 +99,17 @@ const HorizontalVideoCard = ({ video }: Props) => {
 						{video.snippet?.channelTitle}
 					</MUILink>
 				</Tooltip>
-				<Typography
-					fontSize={14}
-					mt={0.4}
-					color={grey[700]}
-					mr="auto"
-					sx={{ overflow: 'hidden', WebkitBoxOrient: 'vertical', display: '-webkit-box', WebkitLineClamp: 1 }}
-				>
-					{video.snippet?.description}
-				</Typography>
+				{!dense && (
+					<Typography
+						fontSize={14}
+						mt={0.4}
+						color={grey[700]}
+						mr="auto"
+						sx={{ overflow: 'hidden', WebkitBoxOrient: 'vertical', display: '-webkit-box', WebkitLineClamp: 1 }}
+					>
+						{video.snippet?.description}
+					</Typography>
+				)}
 			</Box>
 			<MoreMenu anchorEl={menuButton} onClose={() => setMenuButton(null)} />
 		</Card>

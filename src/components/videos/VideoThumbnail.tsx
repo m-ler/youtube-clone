@@ -8,9 +8,10 @@ import { useMemo } from 'react'
 
 type Props = {
 	video: youtube_v3.Schema$Video
+	borderRadius: 'small' | 'medium'
 }
 
-const VideoThumbnail = ({ video }: Props) => {
+const VideoThumbnail = ({ video, borderRadius }: Props) => {
 	const { videoId } = useMemo(() => getFormattedVideoData(video), [video.id])
 	const duration = formatISO8601Duration(video.contentDetails?.duration || '')
 
@@ -24,7 +25,7 @@ const VideoThumbnail = ({ video }: Props) => {
 					width={640}
 					height={360}
 					style={{
-						borderRadius: 15,
+						borderRadius: borderRadius === 'small' ? '8px' : '15px',
 						width: '100%',
 						height: 'auto',
 						display: 'block',

@@ -11,7 +11,7 @@ type Props = {
 
 const CommentsList = ({ totalResults, comments }: Props) => {
 	return (
-		<Stack spacing={2}>
+		<Stack spacing={2} pr={{ xs: 0, sm: 4 }}>
 			<Box>
 				<Typography fontSize={16} lineHeight="16px">{`${totalResults} ${
 					totalResults === 1 ? 'Comment' : 'Comments'

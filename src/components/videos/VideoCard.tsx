@@ -31,7 +31,7 @@ const VideoCard = ({ video, hideChannelName }: Props) => {
 			}}
 			elevation={0}
 		>
-			<VideoThumbnail video={video} />
+			<VideoThumbnail video={video} borderRadius="medium" />
 			<Box display="flex" alignItems="start">
 				<Box display="flex" flexDirection="column" flexGrow={1} mt={1.5}>
 					<MUILink

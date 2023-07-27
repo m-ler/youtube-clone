@@ -1,6 +1,4 @@
 import { youtubeClient } from '@/lib/googleapis/youtube-client'
-import { GaxiosError } from 'gaxios'
-import { youtube_v3 } from 'googleapis'
 import { NextRequest, NextResponse } from 'next/server'
 export const revalidate = 60 * 60 * 6
 export const dynamic = 'force-dynamic'

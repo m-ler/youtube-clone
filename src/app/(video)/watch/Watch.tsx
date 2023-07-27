@@ -1,7 +1,7 @@
 'use client'
 
 import VideoEmbed from '@/components/VideoEmbed'
-import VideoListSkeleton from '@/components/videos/VideoListSkeleton'
+import RelatedVideosList from '@/components/videos/RelatedVideosList'
 import { Box, Container } from '@mui/material'
 import { ReactNode } from 'react'
 
@@ -35,13 +35,14 @@ const Watch = ({ videoId, videoMetadata, comments }: Props) => {
 					{videoMetadata}
 				</Box>
 				<Box
+					overflow="hidden"
 					maxWidth="100%"
 					gridColumn={{ xs: ' 1/2', md: '2/3' }}
 					gridRow={{ sm: '3/4', md: '1/4' }}
 					pl={{ xs: 0, md: 2 }}
 					pr={{ xs: 0, md: 4 }}
 				>
-					<VideoListSkeleton />
+					<RelatedVideosList />
 				</Box>
 				<Box width="100%" height="100%" gridColumn="1/2" gridRow={{ sm: '4/5', md: '3/4' }} pb={2}>
 					{comments}
