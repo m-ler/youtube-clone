@@ -3,13 +3,13 @@ import { youtube_v3 } from 'googleapis'
 import ChannelVideos from './ChannelVideos'
 
 const getChannelVideos = async (channelId: string) => {
-	try {
-		const res = await fetch(`${SITE_BASE_URL}/api/videos/channel/${channelId}`)
+	const res = await fetch(`${SITE_BASE_URL}/api/videos/channel/${channelId}`)
+	if (res.ok) {
 		const data = (await res.json()) as youtube_v3.Schema$VideoListResponse
 		return data.items || null
-	} catch (error) {
-		return null
 	}
+
+	throw new Error(res.statusText)
 }
 
 type Props = {

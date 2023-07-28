@@ -3,13 +3,13 @@ import Home from './Home'
 import { youtube_v3 } from 'googleapis'
 
 const getFeed = async () => {
-	try {
-		const res = await fetch(`${SITE_BASE_URL}/api/videos`)
+	const res = await fetch(`${SITE_BASE_URL}/api/videos`)
+	if (res.ok) {
 		const data = (await res.json()) as youtube_v3.Schema$VideoListResponse
 		return data.items
-	} catch (error) {
-		return []
 	}
+
+	throw new Error(res.statusText)
 }
 
 const Page = async () => {
