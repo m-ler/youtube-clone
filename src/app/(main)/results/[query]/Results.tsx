@@ -1,7 +1,7 @@
 'use client'
 
 import VideoList from '@/components/videos/VideoList'
-import { Container } from '@mui/material'
+import { Container, Typography } from '@mui/material'
 import { youtube_v3 } from 'googleapis'
 
 type Props = {
@@ -11,7 +11,13 @@ type Props = {
 const Results = ({ results }: Props) => {
 	return (
 		<Container maxWidth="lg" sx={{ pt: 1.5, '&': { px: 3 } }}>
-			<VideoList videos={results} />
+			{results.length ? (
+				<VideoList videos={results} />
+			) : (
+				<Typography fontSize={14} textAlign="center">
+					No videos found
+				</Typography>
+			)}
 		</Container>
 	)
 }

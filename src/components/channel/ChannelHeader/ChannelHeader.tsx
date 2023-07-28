@@ -21,7 +21,7 @@ type Props = {
 const Component = async ({ channelId }: Props) => {
 	await new Promise((resolve) => setTimeout(resolve, 1000))
 	const channel = await getChannel(channelId)
-	return channel ? <ChannelHeaderCard channel={channel} /> : <>Channel not found.</>
+	return channel ? <ChannelHeaderCard channel={channel} /> : <></>
 }
 
 const ChannelHeader = async ({ channelId }: Props) => {

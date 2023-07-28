@@ -1,7 +1,7 @@
 'use client'
 
 import VideoGrid from '@/components/videos/VideoGrid'
-import { Box } from '@mui/material'
+import { Box, Typography } from '@mui/material'
 import { youtube_v3 } from 'googleapis'
 
 type Props = {
@@ -11,7 +11,13 @@ type Props = {
 const ChannelVideos = ({ videos }: Props) => {
 	return (
 		<Box p={2} py={3}>
-			<VideoGrid videos={videos} hideChannelName />
+			{videos.length ? (
+				<VideoGrid videos={videos} hideChannelName />
+			) : (
+				<Typography fontSize={14} textAlign="center">
+					This channel doesn&apos;t have any content
+				</Typography>
+			)}
 		</Box>
 	)
 }

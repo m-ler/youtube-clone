@@ -1,7 +1,7 @@
 'use client'
 
 import VideoGrid from '@/components/videos/VideoGrid'
-import { Container } from '@mui/material'
+import { Container, Typography } from '@mui/material'
 import { youtube_v3 } from 'googleapis'
 
 type Props = {
@@ -11,7 +11,13 @@ type Props = {
 const Home = ({ videos }: Props) => {
 	return (
 		<Container maxWidth="2xl" sx={{ pt: 1.5, '&': { px: 3 } }}>
-			<VideoGrid videos={videos} />
+			{videos.length ? (
+				<VideoGrid videos={videos} />
+			) : (
+				<Typography fontSize={14} textAlign="center">
+					No videos found
+				</Typography>
+			)}
 		</Container>
 	)
 }
