@@ -26,7 +26,8 @@ const VideoThumbnail = ({ video, borderRadius }: Props) => {
 					height={360}
 					style={{
 						borderRadius: borderRadius === 'small' ? '8px' : '15px',
-						width: '100%',
+						width: '640px',
+						maxWidth: '100%',
 						height: 'auto',
 						display: 'block',
 						objectFit: 'cover',

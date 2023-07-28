@@ -6,6 +6,6 @@ import momentDurationFormatSetup from 'moment-duration-format'
 momentDurationFormatSetup(moment)
 
 export const formatISO8601Duration = (duration: string) => {
-	const formattedDuration = moment.duration(duration).format('h:m:ss', 0, { stopTrim: 'm' })
+	const formattedDuration = moment.duration(duration).format('h:mm:ss', 0, { stopTrim: 'm' })
 	return formattedDuration
 }
