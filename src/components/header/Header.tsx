@@ -1,6 +1,6 @@
 'use client'
 
-import { AccountCircleOutlined, ArrowBackOutlined, MoreVert, Search } from '@mui/icons-material'
+import { AccountCircleOutlined, ArrowBackOutlined, Search } from '@mui/icons-material'
 import { AppBar, Box, Button, IconButton, Theme, Toolbar, Tooltip, useMediaQuery } from '@mui/material'
 import { grey } from '@mui/material/colors'
 import Image from 'next/image'
@@ -8,6 +8,7 @@ import SearchBar from './SearchBar'
 import NavMenuButton from '../NavMenuButton'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
+import SettingsButton from './SettingsButton'
 
 const Header = () => {
 	const [onlySearchBar, setOnlySearchBar] = useState(false)
@@ -52,11 +53,7 @@ const Header = () => {
 								<Search />
 							</IconButton>
 						</Tooltip>
-						<Tooltip title="Settings">
-							<IconButton aria-label="settings menu" sx={{ mr: 1 }}>
-								<MoreVert />
-							</IconButton>
-						</Tooltip>
+						<SettingsButton />
 						<Button
 							variant="outlined"
 							startIcon={<AccountCircleOutlined />}

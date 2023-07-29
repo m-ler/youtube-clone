@@ -63,6 +63,7 @@ const menuItems: { primary: MenuOption[]; secondary: MenuOption[] } = {
 const MoreMenu = ({ anchorEl, onClose }: Props) => {
 	return (
 		<Menu
+			elevation={2}
 			anchorOrigin={{
 				vertical: 'top',
 				horizontal: 'left',
