@@ -19,9 +19,7 @@ export const GET = async (req: NextRequest, { params }: Params) => {
 		})
 
 		return NextResponse.json(res.data)
-	} catch (e) {
-		return new NextResponse("Couldn't fetch video.", {
-			status: 500,
-		})
+	} catch (error) {
+		return youtubeAPIExeptionResponse(error)
 	}
 }
