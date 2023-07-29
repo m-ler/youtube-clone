@@ -1,3 +1,4 @@
+import { colorModeState } from '@/store/colorMode'
 import { Appearance } from '@/types'
 import { ArrowBackOutlined, CheckOutlined } from '@mui/icons-material'
 import { ListItemIcon, ListItemText, Menu, MenuItem, MenuList } from '@mui/material'
@@ -9,7 +10,10 @@ type Props = {
 }
 
 const AppearanceMenu = ({ open, anchorEl, onClose }: Props) => {
+	const { value: colorMode, setColorMode } = colorModeState((state) => state)
+
 	const toggleTheme = (appearance: Appearance) => {
+		setColorMode(appearance)
 		onClose()
 	}
 
@@ -39,21 +43,15 @@ const AppearanceMenu = ({ open, anchorEl, onClose }: Props) => {
 			</MenuItem>
 			<MenuList dense>
 				<MenuItem onClick={() => toggleTheme('device')}>
-					<ListItemIcon>
-						<></>
-					</ListItemIcon>
+					<ListItemIcon>{colorMode === 'device' ? <CheckOutlined fontSize="small" /> : <></>}</ListItemIcon>
 					<ListItemText>Use device theme</ListItemText>
 				</MenuItem>
 				<MenuItem onClick={() => toggleTheme('dark')}>
-					<ListItemIcon>
-						<></>
-					</ListItemIcon>
+					<ListItemIcon>{colorMode === 'dark' ? <CheckOutlined fontSize="small" /> : <></>}</ListItemIcon>
 					<ListItemText>Dark theme</ListItemText>
 				</MenuItem>
 				<MenuItem onClick={() => toggleTheme('light')}>
-					<ListItemIcon>
-						<CheckOutlined fontSize="small" />
-					</ListItemIcon>
+					<ListItemIcon>{colorMode === 'light' ? <CheckOutlined fontSize="small" /> : <></>}</ListItemIcon>
 					<ListItemText>Light theme</ListItemText>
 				</MenuItem>
 			</MenuList>

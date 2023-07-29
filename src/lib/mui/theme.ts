@@ -1,4 +1,4 @@
-import { createTheme } from '@mui/material'
+import { ThemeOptions, createTheme } from '@mui/material'
 import { grey } from '@mui/material/colors'
 import { Roboto_Flex } from 'next/font/google'
 
@@ -10,7 +10,7 @@ declare module '@mui/material/styles' {
 	}
 }
 
-const theme = createTheme({
+const baseTheme: ThemeOptions = {
 	palette: {
 		primary: { ...grey, main: '#000' },
 	},
@@ -44,6 +44,10 @@ const theme = createTheme({
 			'2xl': 2256,
 		},
 	},
-})
+}
 
-export default theme
+export const theme = createTheme({ ...baseTheme })
+export const darkTheme = createTheme({
+	...baseTheme,
+	palette: { mode: 'dark', background: { default: '#0f0f0f', paper: '#0f0f0f' }, ...baseTheme.palette },
+})

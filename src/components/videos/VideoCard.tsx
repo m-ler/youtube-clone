@@ -1,6 +1,5 @@
 'use client'
 import { Box, Card, IconButton, Tooltip, Typography, Link as MUILink } from '@mui/material'
-import { grey } from '@mui/material/colors'
 import { youtube_v3 } from 'googleapis'
 import VideoThumbnail from './VideoThumbnail'
 import { MoreVert } from '@mui/icons-material'
@@ -39,10 +38,11 @@ const VideoCard = ({ video, hideChannelName }: Props) => {
 						component={Link}
 						title={video.snippet?.title || ''}
 						fontSize={16}
-						color={grey[900]}
+						color="text.primary"
 						fontWeight="600"
 						lineHeight="1.4rem"
 						sx={{
+							opacity: 0.9,
 							overflow: 'hidden',
 							WebkitBoxOrient: 'vertical',
 							display: '-webkit-box',
@@ -59,7 +59,7 @@ const VideoCard = ({ video, hideChannelName }: Props) => {
 								component={Link}
 								fontSize={14}
 								my={0.4}
-								color={grey[700]}
+								color="text.secondary"
 								mr="auto"
 								sx={{
 									overflow: 'hidden',
@@ -68,7 +68,7 @@ const VideoCard = ({ video, hideChannelName }: Props) => {
 									WebkitLineClamp: 1,
 									textDecoration: 'none',
 									'&:hover': {
-										color: grey[900],
+										color: 'text.primary',
 									},
 								}}
 							>
@@ -77,7 +77,7 @@ const VideoCard = ({ video, hideChannelName }: Props) => {
 						</Tooltip>
 					)}
 
-					<Typography fontSize={14} color={grey[700]}>
+					<Typography fontSize={14} color={'text.secondary'}>
 						{viewCount && (
 							<>
 								{views}

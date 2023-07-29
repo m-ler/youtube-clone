@@ -1,6 +1,5 @@
 'use client'
 import { Box, Card, IconButton, Stack, Tooltip, Typography, Link as MUILink } from '@mui/material'
-import { grey } from '@mui/material/colors'
 import { youtube_v3 } from 'googleapis'
 import VideoThumbnail from './VideoThumbnail'
 import { MoreVert } from '@mui/icons-material'
@@ -43,10 +42,11 @@ const HorizontalVideoCard = ({ video, dense }: Props) => {
 						component={Link}
 						title={video.snippet?.title || ''}
 						fontSize={16}
-						color={grey[900]}
+						color="text.primary"
 						fontWeight="600"
 						lineHeight="1.4rem"
 						sx={{
+							opacity: 0.9,
 							overflow: 'hidden',
 							WebkitBoxOrient: 'vertical',
 							display: '-webkit-box',
@@ -67,7 +67,7 @@ const HorizontalVideoCard = ({ video, dense }: Props) => {
 
 				<Typography
 					fontSize={14}
-					color={grey[700]}
+					color="text.secondary"
 					sx={{ overflow: 'hidden', WebkitBoxOrient: 'vertical', display: '-webkit-box', WebkitLineClamp: 1 }}
 				>
 					{viewCount && (
@@ -86,7 +86,7 @@ const HorizontalVideoCard = ({ video, dense }: Props) => {
 						href={`/channel/${video.snippet?.channelId}/videos`}
 						fontSize={14}
 						mt={0.4}
-						color={grey[700]}
+						color="text.secondary"
 						mr="auto"
 						sx={{
 							overflow: 'hidden',
@@ -103,7 +103,7 @@ const HorizontalVideoCard = ({ video, dense }: Props) => {
 					<Typography
 						fontSize={14}
 						mt={0.4}
-						color={grey[700]}
+						color="text.secondary"
 						mr="auto"
 						sx={{ overflow: 'hidden', WebkitBoxOrient: 'vertical', display: '-webkit-box', WebkitLineClamp: 1 }}
 					>

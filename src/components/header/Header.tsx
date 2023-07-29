@@ -24,7 +24,7 @@ const Header = () => {
 			position="sticky"
 			elevation={0}
 			color="transparent"
-			sx={{ '& .MuiToolbar-root': { minHeight: { xs: 56 } }, bgcolor: 'white', overflow: 'hidden' }}
+			sx={{ '& .MuiToolbar-root': { minHeight: { xs: 56 } }, bgcolor: 'background.default', overflow: 'hidden' }}
 		>
 			<Toolbar sx={{ '&.MuiToolbar-root': { px: 2 } }}>
 				{onlySearchBar ? (
@@ -37,7 +37,7 @@ const Header = () => {
 				) : (
 					<>
 						<NavMenuButton />
-						<Link href="/">
+						<Link href="/" style={{ display: 'flex' }}>
 							<Image src="/img/logo.svg" width={90} height={20} alt="Youtube logo" priority />
 						</Link>
 						<Box display={{ xs: 'none', sm: 'inline' }} mx="auto" pl={2} maxWidth={640} width="100%">

@@ -13,22 +13,14 @@ import {
 	TranslateOutlined,
 	VerifiedUserOutlined,
 } from '@mui/icons-material'
-import {
-	Divider,
-	IconButton,
-	ListItemIcon,
-	ListItemText,
-	Menu,
-	MenuItem,
-	MenuList,
-	Tooltip,
-	Typography,
-} from '@mui/material'
+import { Divider, IconButton, ListItemIcon, ListItemText, Menu, MenuItem, MenuList, Tooltip } from '@mui/material'
 import { useState } from 'react'
 import AppearanceMenu from './AppearanceMenu'
+import { colorModeState } from '@/store/colorMode'
 
 const SettingsButton = () => {
 	const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null)
+	const colorMode = colorModeState((state) => state.value)
 	const [showAppearanceMenu, setShowAppearanceMenu] = useState(false)
 	const closeMenu = () => setAnchorEl(null)
 
@@ -68,7 +60,9 @@ const SettingsButton = () => {
 						<ListItemIcon>
 							<ModeNightOutlined fontSize="small" />
 						</ListItemIcon>
-						<ListItemText>Appearence: Light</ListItemText>
+						<ListItemText>
+							Appearence: {colorMode === 'device' ? 'Device theme' : colorMode === 'dark' ? 'Dark' : 'Light'}
+						</ListItemText>
 						<ArrowForwardIosOutlined />
 					</MenuItem>
 
