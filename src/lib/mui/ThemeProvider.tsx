@@ -2,15 +2,20 @@
 
 import { ThemeProvider as MUIThemeProvider } from '@mui/material/styles'
 import { theme, darkTheme } from './theme'
-import { PropsWithChildren } from 'react'
+import { PropsWithChildren, useEffect, useState } from 'react'
 import { NextAppDirEmotionCacheProvider } from './EmotionCache'
 import { colorModeState } from '@/store/colorMode'
-import { CssBaseline } from '@mui/material'
+import CssBaseline from '@mui/material/CssBaseline'
 import { isDefaultDarkMode } from '../utils/device'
 
 const ThemeProvider = ({ children }: PropsWithChildren) => {
 	const colorMode = colorModeState((state) => state.value)
-	const colorModeValue = colorMode === 'device' ? isDefaultDarkMode() ? 'dark' : 'light' : colorMode
+	const [colorModeValue, setColorModeValue] = useState('light')
+	useEffect(() => {
+		const mode = colorMode === 'device' ? (isDefaultDarkMode() ? 'dark' : 'light') : colorMode
+		setColorModeValue(mode)
+		document.body.classList.toggle('dark', mode === 'dark')
+	}, [colorMode])
 
 	return (
 		<NextAppDirEmotionCacheProvider options={{ key: 'mui' }}>
@@ -18,7 +23,6 @@ const ThemeProvider = ({ children }: PropsWithChildren) => {
 				<CssBaseline enableColorScheme />
 				{children}
 			</MUIThemeProvider>
-			;
 		</NextAppDirEmotionCacheProvider>
 	)
 }

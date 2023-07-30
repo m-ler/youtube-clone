@@ -14,7 +14,7 @@ const ChannelVideos = ({ videos }: Props) => {
 			{videos.length ? (
 				<VideoGrid videos={videos} hideChannelName />
 			) : (
-				<Typography fontSize={14} textAlign="center">
+				<Typography fontSize={14} textAlign="center" color="text.secondary">
 					This channel doesn&apos;t have any content
 				</Typography>
 			)}

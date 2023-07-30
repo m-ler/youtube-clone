@@ -1,14 +1,12 @@
 'use client'
 
 import { AccountCircleOutlined, ArrowBackOutlined, Search } from '@mui/icons-material'
-import { AppBar, Box, Button, IconButton, Theme, Toolbar, Tooltip, useMediaQuery } from '@mui/material'
-import { grey } from '@mui/material/colors'
-import Image from 'next/image'
+import { AppBar, Box, Button, IconButton, Theme, Toolbar, Tooltip, useMediaQuery, Link as MUILInk } from '@mui/material'
 import SearchBar from './SearchBar'
 import NavMenuButton from '../NavMenuButton'
-import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import SettingsButton from './SettingsButton'
+import YoutubeTextIcon from '@/assets/svgr/YoutubeTextIcon'
 
 const Header = () => {
 	const [onlySearchBar, setOnlySearchBar] = useState(false)
@@ -37,9 +35,9 @@ const Header = () => {
 				) : (
 					<>
 						<NavMenuButton />
-						<Link href="/" style={{ display: 'flex' }}>
-							<Image src="/img/logo.svg" width={90} height={20} alt="Youtube logo" priority />
-						</Link>
+						<MUILInk href="/" sx={{ display: 'flex', '& > svg': { color: 'text.primary' } }}>
+							<YoutubeTextIcon width={90} height={20} />
+						</MUILInk>
 						<Box display={{ xs: 'none', sm: 'inline' }} mx="auto" pl={2} maxWidth={640} width="100%">
 							<SearchBar />
 						</Box>
@@ -57,7 +55,13 @@ const Header = () => {
 						<Button
 							variant="outlined"
 							startIcon={<AccountCircleOutlined />}
-							sx={{ borderRadius: 5, borderColor: grey[200] }}
+							sx={{
+								borderRadius: 5,
+								borderColor: 'action.focus',
+								color: 'info.main',
+								whiteSpace: 'nowrap',
+								overflow: 'hidden',
+							}}
 						>
 							Sign in
 						</Button>

@@ -1,3 +1,4 @@
+'use client'
 import { navigationSidebarsState } from '@/store/navigationSideBars'
 import { Menu } from '@mui/icons-material'
 import { IconButton, Theme, useMediaQuery } from '@mui/material'

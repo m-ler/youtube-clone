@@ -35,16 +35,17 @@ const Comment = ({ comment }: Props) => {
 					fontSize={13}
 					fontWeight="500"
 					sx={{ textDecoration: 'none' }}
+					color="text.primary"
 				>
 					{comment.snippet?.topLevelComment?.snippet?.authorDisplayName || ''}
 					<Typography component="span" fontSize={12} color="text.secondary" pl={1}>
 						{timeAgo}
 					</Typography>
 				</MUILink>
-				<Typography fontSize={14} fontWeight="300" mt={0.25}>
+				<Typography fontSize={14} fontWeight="300" mt={0.25} color="text.primary">
 					{comment.snippet?.topLevelComment?.snippet?.textOriginal || ''}
 				</Typography>
-				<Box display="flex" flexDirection="row" mt={0.75} alignItems="center">
+				<Box display="flex" flexDirection="row" mt={0.75} alignItems="center" color="text.primary">
 					<Tooltip title="Like">
 						<IconButton size="small" edge="start">
 							<ThumbUpOffAltOutlined fontSize="small" />
@@ -62,7 +63,7 @@ const Comment = ({ comment }: Props) => {
 						</IconButton>
 					</Tooltip>
 
-					<Button size="small" sx={{ borderRadius: '18px' }}>
+					<Button size="small" sx={{ borderRadius: '18px' }} color="inherit">
 						Reply
 					</Button>
 				</Box>

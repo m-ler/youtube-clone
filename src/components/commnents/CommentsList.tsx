@@ -13,7 +13,7 @@ const CommentsList = ({ totalResults, comments }: Props) => {
 	return (
 		<Stack spacing={2} pr={{ xs: 0, sm: 4 }}>
 			<Box>
-				<Typography fontSize={16} lineHeight="16px">{`${totalResults} ${
+				<Typography fontSize={16} lineHeight="16px" color="text.primary">{`${totalResults} ${
 					totalResults === 1 ? 'Comment' : 'Comments'
 				}`}</Typography>
 			</Box>

@@ -24,9 +24,10 @@ const VideoMetadataCard = ({ video, channel }: Props) => {
 			<Typography
 				variant="h1"
 				fontSize={20}
-				fontWeight="600"
+				fontWeight="500"
 				overflow="hidden"
 				sx={{ WebkitBoxOrient: 'vertical', display: '-webkit-box', WebkitLineClamp: 2 }}
+				color="text.primary"
 			>
 				{video.snippet?.title}
 			</Typography>
@@ -34,7 +35,11 @@ const VideoMetadataCard = ({ video, channel }: Props) => {
 			<Stack direction="row" flexWrap="wrap" gap={1.5}>
 				<Stack direction="row" alignItems="center" mr="auto">
 					<ChannelAvatar channel={channel} channelName={channelName} subs={subs} />
-					<Button variant="contained" sx={{ borderRadius: '18px' }} disableElevation>
+					<Button
+						variant="contained"
+						sx={{ borderRadius: '18px', bgcolor: 'text.primary' }}
+						disableElevation
+					>
 						Subscribe
 					</Button>
 				</Stack>

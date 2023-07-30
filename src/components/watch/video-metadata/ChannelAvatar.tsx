@@ -1,6 +1,5 @@
 import { stringAvatar, stringToColor } from '@/lib/utils/avatar'
 import { Avatar, Box, Link, Stack, Tooltip, Typography, Link as MUILInk } from '@mui/material'
-import { grey } from '@mui/material/colors'
 import { youtube_v3 } from 'googleapis'
 
 type Props = {
@@ -35,6 +34,7 @@ const ChannelAvatar = ({ channel, channelName, subs, avatarSize }: Props) => {
 						whiteSpace="nowrap"
 						textOverflow="ellipsis"
 						overflow="hidden"
+						color="text.primary"
 						sx={{ textDecoration: 'none' }}
 					>
 						{channelName}
@@ -43,7 +43,7 @@ const ChannelAvatar = ({ channel, channelName, subs, avatarSize }: Props) => {
 				<Typography
 					fontSize={12}
 					lineHeight="12px"
-					color={grey[600]}
+					color="text.secondary"
 					whiteSpace="nowrap"
 					textOverflow="ellipsis"
 					overflow="hidden"

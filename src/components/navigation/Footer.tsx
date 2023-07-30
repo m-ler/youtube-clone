@@ -1,6 +1,5 @@
 import { footerNavigation } from '@/config/siteNavigation'
-import { Link as MUILink, Stack, Typography, alpha } from '@mui/material'
-import { grey } from '@mui/material/colors'
+import { Link as MUILink, Stack, Typography } from '@mui/material'
 import Link from 'next/link'
 
 const currentYear = new Date().getFullYear()
@@ -14,7 +13,7 @@ const Footer = () => {
 						key={x.name}
 						component={Link}
 						href={x.href}
-						sx={{ textDecoration: 'none', fontSize: 13, color: grey[900], fontWeight: '500' }}
+						sx={{ textDecoration: 'none', fontSize: 13, color: 'text.secondary', fontWeight: '500' }}
 					>
 						{x.name}
 					</MUILink>
@@ -26,7 +25,7 @@ const Footer = () => {
 						key={x.name}
 						component={Link}
 						href={x.href}
-						sx={{ textDecoration: 'none', fontSize: 13, color: grey[900], fontWeight: '500' }}
+						sx={{ textDecoration: 'none', fontSize: 13, color: 'text.secondary', fontWeight: '500' }}
 					>
 						{x.name}
 					</MUILink>
@@ -34,7 +33,7 @@ const Footer = () => {
 			</Stack>
 			<Typography
 				fontSize={12}
-				sx={{ color: alpha(grey[900], 0.5) }}
+				sx={{ color: 'text.disabled' }}
 				px={3}
 				pt={2}
 			>{`© ${currentYear} YouTube Clone`}</Typography>

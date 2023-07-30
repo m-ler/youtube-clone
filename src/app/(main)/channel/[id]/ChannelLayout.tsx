@@ -21,7 +21,15 @@ const ChannelLayout = ({ channelHeader, children }: Props) => {
 			</Box>
 			<Box sx={{ position: 'sticky', top: '56px', zIndex: 10 }} component={Paper} elevation={0}>
 				<Container maxWidth={false} sx={{ maxWidth: '1284px', '&': { p: 0 } }}>
-					<Tabs value={pathname.includes('/videos') ? 0 : pathname.includes('/about') ? 1 : null}>
+					<Tabs
+						value={pathname.includes('/videos') ? 0 : pathname.includes('/about') ? 1 : null}
+						textColor="inherit"
+						sx={{
+							'& .MuiTabs-indicator': {
+								backgroundColor: 'text.secondary',
+							},
+						}}
+					>
 						<Tab label="Videos" component={Link} href="videos" />
 						<Tab label="About" component={Link} href="about" />
 					</Tabs>

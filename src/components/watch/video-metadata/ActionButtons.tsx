@@ -7,7 +7,6 @@ import {
 } from '@mui/icons-material'
 import { Chip, IconButton, Stack, Tooltip } from '@mui/material'
 import LikeButtonGroup from './LikeButtonGroup'
-import { grey } from '@mui/material/colors'
 
 type Props = {
 	likes: string
@@ -44,7 +43,7 @@ const ActionButtons = ({ likes }: Props) => {
 					sx={{ display: { xs: 'none', md: 'flex' } }}
 				/>
 			</Tooltip>
-			<IconButton sx={{ bgcolor: grey[200], p: 0.75, flexShrink: 0 }}>
+			<IconButton sx={{ bgcolor: 'action.selected', p: 0.75, flexShrink: 0 }}>
 				<MoreHoriz />
 			</IconButton>
 		</Stack>

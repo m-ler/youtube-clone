@@ -21,10 +21,10 @@ const ChannelHeaderCard = ({ channel }: Props) => {
 				sx={{ width: '128px', height: '128px', fontSize: 42, display: { xs: 'none', sm: 'flex' } }}
 			></Avatar>
 			<Box display="flex" flexDirection="column" justifyContent="center" ml={{ xs: 0, sm: 2.5 }}>
-				<Typography component="h1" fontSize={24}>
+				<Typography component="h1" fontSize={24} color="text.primary">
 					{channelName}
 				</Typography>
-				<Typography fontSize={14}>
+				<Typography fontSize={14} color="text.primary">
 					{channel.snippet?.customUrl}
 					<Typography component="span" fontSize={14} ml={1} color="text.secondary">
 						{subs}
@@ -33,10 +33,15 @@ const ChannelHeaderCard = ({ channel }: Props) => {
 						{videos}
 					</Typography>
 				</Typography>
-				<Box display="flex" alignItems="center" mt={1}>
-					<MUILink
-						component={Link}
-						href="about"
+				<MUILink
+					display="flex"
+					component={Link}
+					href="about"
+					alignItems="center"
+					mt={1}
+					sx={{ textDecoration: 'none' }}
+				>
+					<Typography
 						fontSize={14}
 						color="text.secondary"
 						display="flex"
@@ -48,13 +53,12 @@ const ChannelHeaderCard = ({ channel }: Props) => {
 							WebkitBoxOrient: 'vertical',
 							display: '-webkit-box',
 							WebkitLineClamp: 1,
-							textDecoration: 'none',
 						}}
 					>
 						{channel.snippet?.description || 'More about this channel'}
-					</MUILink>
-					<KeyboardArrowRightOutlined />
-				</Box>
+					</Typography>
+					<KeyboardArrowRightOutlined sx={{ color: 'text.secondary' }} />
+				</MUILink>
 			</Box>
 		</Box>
 	)

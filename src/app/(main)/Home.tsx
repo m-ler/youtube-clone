@@ -14,7 +14,7 @@ const Home = ({ videos }: Props) => {
 			{videos.length ? (
 				<VideoGrid videos={videos} />
 			) : (
-				<Typography fontSize={14} textAlign="center">
+				<Typography fontSize={14} textAlign="center" color="text.secondary">
 					No videos found
 				</Typography>
 			)}

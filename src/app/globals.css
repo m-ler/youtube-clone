@@ -20,3 +20,7 @@
 *::-webkit-scrollbar-corner {
 	background: transparent;
 }
+
+body.dark {
+	background-color: #0f0f0f;
+}

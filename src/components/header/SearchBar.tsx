@@ -1,6 +1,5 @@
 import { Close, Mic, Search } from '@mui/icons-material'
 import { Box, Button, IconButton, InputBase, Tooltip, Stack } from '@mui/material'
-import { grey } from '@mui/material/colors'
 import { useParams, useRouter } from 'next/navigation'
 import { FormEvent, useState } from 'react'
 
@@ -17,7 +16,13 @@ const SearchBar = () => {
 
 	return (
 		<Box component="form" display="flex" flexDirection="row" flexGrow={1} mx="auto" width="100%" onSubmit={onSubmit}>
-			<Stack direction="row" border="1px solid" borderColor={grey[300]} borderRadius="40px 0px 0px 40px" flexGrow={1}>
+			<Stack
+				direction="row"
+				border="1px solid"
+				borderColor="action.focus"
+				borderRadius="40px 0px 0px 40px"
+				flexGrow={1}
+			>
 				<InputBase
 					sx={{ pl: 2, width: '100%', height: '100%' }}
 					placeholder="Search"
@@ -34,20 +39,20 @@ const SearchBar = () => {
 				type="submit"
 				color="inherit"
 				sx={{
-					bgcolor: grey[100],
+					bgcolor: 'action.hover',
 					borderRadius: '0px 14px 14px 0px',
 					border: '1px solid',
 					borderLeftWidth: 0,
-					borderColor: grey[300],
+					borderColor: 'action.focus',
 				}}
 				aria-label="search button"
 			>
-				<Search sx={{ color: grey[500], fontSize: 26 }} />
+				<Search sx={{ color: 'text.disabled', fontSize: 26 }} />
 			</Button>
 
 			<Tooltip title="Search with your voice">
-				<IconButton aria-label="voice search" sx={{ ml: 1 }}>
-					<Mic sx={{ color: grey[900] }} />
+				<IconButton aria-label="voice search" sx={{ ml: 2, bgcolor: 'action.hover' }}>
+					<Mic sx={{ color: 'text.primary' }} />
 				</IconButton>
 			</Tooltip>
 		</Box>

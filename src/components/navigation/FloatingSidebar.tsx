@@ -1,10 +1,10 @@
 'use client'
 
 import { Drawer, Stack } from '@mui/material'
-import Image from 'next/image'
 import NavMenuButton from '../NavMenuButton'
 import { navigationSidebarsState } from '@/store/navigationSideBars'
 import MainNavigation from './MainNavigation'
+import YoutubeTextIcon from '@/assets/svgr/YoutubeTextIcon'
 
 const FloatingSidebar = () => {
 	const { floating, setFloating, floatingOnly } = navigationSidebarsState((state) => state)
@@ -27,7 +27,7 @@ const FloatingSidebar = () => {
 			<Stack maxWidth={236} role="presentation" maxHeight="100%" pt={1} pb={0.5} overflow="hidden">
 				<Stack direction="row" alignItems="center" px={2} pb={1}>
 					<NavMenuButton />
-					<Image src="/img/logo.svg" alt="YouTube logo" width={90} height={20} />
+					<YoutubeTextIcon width={90} height={20} />
 				</Stack>
 				<MainNavigation />
 			</Stack>

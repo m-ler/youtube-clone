@@ -19,7 +19,7 @@ const LikeButtonGroup = ({ likes }: Props) => {
 					},
 					border: 'none',
 					color: grey[800],
-					bgcolor: grey[200],
+					bgcolor: 'action.selected',
 					'&:nth-of-type(1)': {
 						borderRadius: '18px 0px 0px 18px',
 					},
@@ -31,16 +31,16 @@ const LikeButtonGroup = ({ likes }: Props) => {
 		>
 			<Tooltip title="I like this">
 				<Button>
-					<ThumbUpOutlined fontSize="small" />
-					<Typography component="span" ml={1} fontSize={14} fontWeight="500">
+					<ThumbUpOutlined fontSize="small" sx={{ color: 'text.primary' }} />
+					<Typography component="span" ml={1} fontSize={14} fontWeight="500" color="text.primary">
 						{likes}
 					</Typography>
 				</Button>
 			</Tooltip>
-			<Divider sx={{ width: '1px', backgroundColor: grey[400], my: '5%', zIndex: 1 }} />
+			<Divider sx={{ width: '1px', backgroundColor: 'action.selected', my: '5%', zIndex: 1 }} />
 			<Tooltip title="I dislike this">
 				<Button>
-					<ThumbDownOutlined fontSize="small" />
+					<ThumbDownOutlined fontSize="small" sx={{ color: 'text.primary' }} />
 				</Button>
 			</Tooltip>
 		</ButtonGroup>

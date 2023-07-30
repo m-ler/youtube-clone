@@ -1,5 +1,4 @@
 import { Box, Divider, List, Typography } from '@mui/material'
-import { grey } from '@mui/material/colors'
 import NavItem from './NavItem'
 import { useCallback } from 'react'
 import { NavItem as NavItemT } from '@/types'
@@ -39,7 +38,7 @@ const MainNavigation = () => {
 					py: 0.75,
 					borderRadius: '12px',
 					'&.Mui-selected': {
-						bgcolor: grey[100],
+						bgcolor: 'action.hover',
 						'& .MuiListItemText-primary': {
 							fontWeight: '600',
 						},
