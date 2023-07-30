@@ -14,7 +14,7 @@ const Results = ({ results }: Props) => {
 			{results.length ? (
 				<VideoList videos={results} />
 			) : (
-				<Typography fontSize={14} textAlign="center">
+				<Typography fontSize={14} textAlign="center" color="text.secondary">
 					No videos found
 				</Typography>
 			)}

@@ -8,12 +8,13 @@ const Error = ({ error }: { error: Error }) => {
 		<Stack width="100%" maxWidth="100%" alignItems="center" pt={4} spacing={2}>
 			<ErrorIllustration width={120} />
 			<Box px={2}>
-				<Typography fontSize={20} fontWeight="bold" textAlign="center">
+				<Typography fontSize={22} fontWeight="bold" textAlign="center" color="text.primary">
 					Something went wrong...
 				</Typography>
 				<Typography
-					fontSize={14}
+					fontSize={16}
 					textAlign="center"
+					color="text.secondary"
 					dangerouslySetInnerHTML={{
 						__html: error.message,
 					}}
