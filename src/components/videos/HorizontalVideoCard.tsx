@@ -83,6 +83,7 @@ const HorizontalVideoCard = ({ video, dense }: Props) => {
 				</Typography>
 				<Tooltip title={video.snippet?.channelTitle} placement="top">
 					<MUILink
+						component={Link}
 						href={`/channel/${video.snippet?.channelId}/videos`}
 						fontSize={14}
 						mt={0.4}

@@ -1,11 +1,12 @@
 'use client'
 import { stringAvatar, stringToColor } from '@/lib/utils/avatar'
 import { KeyboardArrowDown, KeyboardArrowUp, ThumbDownOutlined, ThumbUpOffAltOutlined } from '@mui/icons-material'
-import { Avatar, Box, Button, IconButton, Link, Stack, Tooltip, Typography, Link as MUILink } from '@mui/material'
+import { Avatar, Box, Button, IconButton, Stack, Tooltip, Typography, Link as MUILink } from '@mui/material'
 import { youtube_v3 } from 'googleapis'
 import Reply from './Reply'
 import { useState } from 'react'
 import { getFormattedCommentData } from '@/lib/utils/youtube'
+import Link from 'next/link'
 
 type Props = {
 	comment: youtube_v3.Schema$CommentThread

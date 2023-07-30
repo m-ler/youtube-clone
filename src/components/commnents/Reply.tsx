@@ -2,8 +2,9 @@
 import { stringAvatar, stringToColor } from '@/lib/utils/avatar'
 import { getFormattedReplyData } from '@/lib/utils/youtube'
 import { ThumbDownOutlined, ThumbUpOffAltOutlined } from '@mui/icons-material'
-import { Avatar, Box, Button, IconButton, Link, Stack, Tooltip, Typography, Link as MUILink } from '@mui/material'
+import { Avatar, Box, Button, IconButton, Stack, Tooltip, Typography, Link as MUILink } from '@mui/material'
 import { youtube_v3 } from 'googleapis'
+import Link from 'next/link'
 
 type Props = {
 	reply: youtube_v3.Schema$Comment

@@ -7,6 +7,7 @@ import NavMenuButton from '../NavMenuButton'
 import { useEffect, useState } from 'react'
 import SettingsButton from './SettingsButton'
 import YoutubeTextIcon from '@/assets/svgr/YoutubeTextIcon'
+import Link from 'next/link'
 
 const Header = () => {
 	const [onlySearchBar, setOnlySearchBar] = useState(false)
@@ -35,7 +36,7 @@ const Header = () => {
 				) : (
 					<>
 						<NavMenuButton />
-						<MUILInk href="/" sx={{ display: 'flex', '& > svg': { color: 'text.primary' } }}>
+						<MUILInk href="/" component={Link} sx={{ display: 'flex', '& > svg': { color: 'text.primary' } }}>
 							<YoutubeTextIcon width={90} height={20} />
 						</MUILInk>
 						<Box display={{ xs: 'none', sm: 'inline' }} mx="auto" pl={2} maxWidth={640} width="100%">

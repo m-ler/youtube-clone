@@ -1,6 +1,7 @@
 import { stringAvatar, stringToColor } from '@/lib/utils/avatar'
-import { Avatar, Box, Link, Stack, Tooltip, Typography, Link as MUILInk } from '@mui/material'
+import { Avatar, Box, Stack, Tooltip, Typography, Link as MUILInk } from '@mui/material'
 import { youtube_v3 } from 'googleapis'
+import Link from 'next/link'
 
 type Props = {
 	channel: youtube_v3.Schema$Channel | null
