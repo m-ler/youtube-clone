@@ -1,3 +1,4 @@
+import { youtubeAPIExeptionResponse } from '@/lib/exeptions/youtube-api-exeption-response'
 import { youtubeClient } from '@/lib/googleapis/youtube-client'
 import { NextRequest, NextResponse } from 'next/server'
 export const revalidate = 60 * 60 * 24
