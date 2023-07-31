@@ -1,12 +1,13 @@
 'use client'
 
-import { Box, Button, Divider, Stack, Typography, Link as MUILink, Link } from '@mui/material'
+import { Box, Button, Divider, Stack, Typography, Link as MUILink } from '@mui/material'
 import { grey } from '@mui/material/colors'
 import { youtube_v3 } from 'googleapis'
 import ChannelAvatar from './ChannelAvatar'
 import { PortraitOutlined, SlideshowOutlined } from '@mui/icons-material'
 import moment from 'moment'
 import { useState } from 'react'
+import Link from 'next/link'
 
 type Props = {
 	video: youtube_v3.Schema$Video
