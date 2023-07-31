@@ -7,7 +7,7 @@ YouTube web application clone made with Next.js 13, YouTube API v3 and MUI.
 ## 🚀 Live demo
 🔗 https://youtube-next-js.vercel.app
 
-## ⌨️ Running Locally
+## ⌨️ Running locally
 
 ```bash
 # Clone the repository
@@ -27,7 +27,7 @@ Create a .env file with the same variables as [`.env.example`](https://github.co
 npm run dev
 ```
 
-## 📌Implemented Features
+## 📌Implemented features
 
 - Home page
 - Search results page
