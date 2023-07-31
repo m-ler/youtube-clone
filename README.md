@@ -11,7 +11,7 @@ YouTube web application clone made with Next.js 13, YouTube API v3 and MUI.
 
 ```bash
 # Clone the repository
-git clone [https://github.com/m-ler/video-game-library.git](https://github.com/m-ler/youtube-clone.git)
+git clone https://github.com/m-ler/youtube-clone.git
 
 # Move into the repository
 cd youtube-clone
