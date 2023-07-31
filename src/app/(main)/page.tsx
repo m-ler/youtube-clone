@@ -5,8 +5,12 @@ import { youtube_v3 } from 'googleapis'
 const getFeed = async () => {
 	const res = await fetch(`${SITE_BASE_URL}/api/videos`)
 	if (res.ok) {
-		const data = (await res.json()) as youtube_v3.Schema$VideoListResponse
-		return data.items
+		try {
+			const data = (await res.json()) as youtube_v3.Schema$VideoListResponse
+			return data.items
+		} catch (e) {
+			return []
+		}
 	}
 
 	throw new Error(res.statusText)
