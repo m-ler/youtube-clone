@@ -8,6 +8,25 @@ const roboto = Roboto_Flex({ subsets: ['latin'], weight: ['100', '300', '400', '
 export const metadata = {
 	title: 'Youtube',
 	description: 'Youtube web clone with Next.js',
+	openGraph: {
+		title: 'Youtube',
+		type: 'website',
+		siteName: 'Youtube clone',
+		description: 'Youtube web clone created with Next.js',
+		images: [
+			{
+				url: '/img/youtube-logo.png',
+				width: 512,
+				height: 512,
+			},
+		],
+	},
+	twitter: {
+		card: 'summary_large_image',
+		title: 'Youtube',
+		description: 'Youtube web clone created with Next.js',
+		images: ['/img/youtube-logo.png'],
+	},
 }
 
 const RootLayout = ({ children }: PropsWithChildren) => {
