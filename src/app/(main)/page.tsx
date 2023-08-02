@@ -3,7 +3,11 @@ import Home from './Home'
 import { youtube_v3 } from 'googleapis'
 
 const getFeed = async () => {
-	const res = await fetch(`${SITE_BASE_URL}/api/videos`)
+	const res = await fetch(`${SITE_BASE_URL}/api/videos`, {
+		next: {
+			revalidate: 60 * 60,
+		},
+	})
 	if (res.ok) {
 		try {
 			const data = (await res.json()) as youtube_v3.Schema$VideoListResponse
