@@ -25,7 +25,7 @@ const Header = () => {
 			color="transparent"
 			sx={{ '& .MuiToolbar-root': { minHeight: { xs: 56 } }, bgcolor: 'background.default', overflow: 'hidden' }}
 		>
-			<Toolbar sx={{ '&.MuiToolbar-root': { px: 2 } }}>
+			<Toolbar sx={{ '&.MuiToolbar-root': { px: { xs: 0.5, sm: 2 } } }}>
 				{onlySearchBar ? (
 					<>
 						<IconButton aria-label="settings menu" sx={{ mr: 1 }} onClick={() => setOnlySearchBar(false)}>
@@ -62,6 +62,7 @@ const Header = () => {
 								color: 'info.main',
 								whiteSpace: 'nowrap',
 								overflow: 'hidden',
+								mr:1
 							}}
 						>
 							Sign in

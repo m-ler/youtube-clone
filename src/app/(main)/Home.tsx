@@ -10,7 +10,7 @@ type Props = {
 
 const Home = ({ videos }: Props) => {
 	return (
-		<Container maxWidth="2xl" sx={{ pt: 1.5, '&': { px: 3 } }}>
+		<Container maxWidth="2xl" sx={{ pt: 1.5, '&': { px: { xs: 1.5, sm: 3 } } }}>
 			{videos.length ? (
 				<VideoGrid videos={videos} />
 			) : (

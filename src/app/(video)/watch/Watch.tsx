@@ -13,7 +13,7 @@ type Props = {
 
 const Watch = ({ videoId, videoMetadata, comments }: Props) => {
 	return (
-		<Container maxWidth={false} sx={{ maxWidth: 'min(100%,1765px)', width: '100%', pt: 3, px: 3 }}>
+		<Container maxWidth={false} sx={{ maxWidth: 'min(100%,1765px)', width: '100%', pt: 3, px: { xs: 0, sm: 3 } }}>
 			<Box
 				sx={{
 					display: 'grid',
@@ -31,7 +31,7 @@ const Watch = ({ videoId, videoMetadata, comments }: Props) => {
 				>
 					<VideoEmbed videoId={videoId} />
 				</Box>
-				<Box gridColumn="1/2" gridRow="2/3" pt={2} pb={4} overflow="hidden">
+				<Box gridColumn="1/2" gridRow="2/3" pt={2} pb={4} px={{ xs: 1.5, sm: 0 }} overflow="hidden">
 					{videoMetadata}
 				</Box>
 				<Box
@@ -39,12 +39,21 @@ const Watch = ({ videoId, videoMetadata, comments }: Props) => {
 					maxWidth="100%"
 					gridColumn={{ xs: ' 1/2', md: '2/3' }}
 					gridRow={{ sm: '3/4', md: '1/4' }}
-					pl={{ xs: 0, md: 2 }}
-					pr={{ xs: 0, md: 4 }}
+					pl={{ xs: 1.5, md: 2 }}
+					pr={{ xs: 1.5, md: 4 }}
 				>
 					<RelatedVideosList />
 				</Box>
-				<Box width="100%" height="100%" gridColumn="1/2" gridRow={{ sm: '4/5', md: '3/4' }} pb={2}>
+				<Box
+					width="100%"
+					maxWidth="100%"
+					overflow="hidden"
+					height="100%"
+					gridColumn="1/2"
+					gridRow={{ sm: '4/5', md: '3/4' }}
+					px={{ xs: 1.5, sm: 0 }}
+					pb={2}
+				>
 					{comments}
 				</Box>
 			</Box>

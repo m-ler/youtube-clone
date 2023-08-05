@@ -11,7 +11,7 @@ type Props = {
 
 const VideoList = ({ videos, dense }: Props) => {
 	return (
-		<Stack spacing={1.5} pb={4}>
+		<Stack spacing={1.5} pb={4} overflow="hidden" maxWidth="100%">
 			{videos.map((x, i) => (
 				<HorizontalVideoCard key={i} video={x} dense={dense} />
 			))}

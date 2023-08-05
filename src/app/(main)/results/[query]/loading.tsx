@@ -5,7 +5,7 @@ import { Container } from '@mui/material'
 
 const Loading = () => {
 	return (
-		<Container maxWidth="lg" sx={{ pt: 1.5, '&': { px: 3 } }}>
+		<Container maxWidth="lg" sx={{ pt: 1.5, '&': { px: { xs: 1.5, sm: 3 } } }}>
 			<VideoListSkeleton />
 		</Container>
 	)

@@ -31,11 +31,11 @@ const HorizontalVideoCard = ({ video, dense }: Props) => {
 			}}
 			elevation={0}
 		>
-			<Box maxWidth={dense ? 168 : 360} minWidth={dense ? 168 : 240}>
+			<Box maxWidth={dense ? 168 : 360} minWidth={168} flexShrink={2} width="35%">
 				<VideoThumbnail video={video} borderRadius={dense ? 'small' : 'medium'} />
 			</Box>
 
-			<Box width="90%" display="flex" flexDirection="column" flexGrow={1} mr="auto">
+			<Box display="flex" flexDirection="column" mr="auto" flexShrink={1} width="65%">
 				<Stack position="relative" pr={4}>
 					<MUILink
 						href={`/watch?v=${videoId}`}
