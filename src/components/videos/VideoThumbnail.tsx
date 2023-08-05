@@ -17,7 +17,7 @@ const VideoThumbnail = ({ video, borderRadius }: Props) => {
 
 	return (
 		<Box position="relative">
-			<Link href={`/watch?v=${videoId}`}>
+			<Link href={`/watch/${videoId}`}>
 				<Image
 					priority
 					src={video.snippet?.thumbnails?.high?.url || ''}

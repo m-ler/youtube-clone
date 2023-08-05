@@ -34,7 +34,7 @@ const VideoCard = ({ video, hideChannelName }: Props) => {
 			<Box display="flex" alignItems="start">
 				<Box display="flex" flexDirection="column" flexGrow={1} mt={1.5}>
 					<MUILink
-						href={`/watch?v=${videoId}`}
+						href={`/watch/${videoId}`}
 						component={Link}
 						title={video.snippet?.title || ''}
 						fontSize={16}

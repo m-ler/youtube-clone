@@ -38,7 +38,7 @@ const HorizontalVideoCard = ({ video, dense }: Props) => {
 			<Box display="flex" flexDirection="column" mr="auto" flexShrink={1} width="65%">
 				<Stack position="relative" pr={4}>
 					<MUILink
-						href={`/watch?v=${videoId}`}
+						href={`/watch/${videoId}`}
 						component={Link}
 						title={video.snippet?.title || ''}
 						fontSize={16}

@@ -3,11 +3,14 @@ import CommentThreads from '@/components/commnents/CommentThreads'
 import VideoMetadata from '@/components/watch/video-metadata'
 
 type Props = {
-	searchParams: { [key: string]: string | string[] | undefined }
+	params: {
+		id: string
+	}
 }
 
-const Page = ({ searchParams }: Props) => {
-	const videoId = (searchParams['v'] || '') as string
+const Page = ({ params }: Props) => {
+	const videoId = params.id
+	
 	return (
 		<Watch
 			videoId={videoId}
