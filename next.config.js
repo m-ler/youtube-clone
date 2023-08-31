@@ -2,6 +2,7 @@
 const nextConfig = {
 	images: {
 		domains: ['i.ytimg.com'],
+		unoptimized: true,
 	},
 	webpack(config) {
 		// SVGR config
@@ -11,7 +12,7 @@ const nextConfig = {
 			{
 				...fileLoaderRule,
 				test: /\.svg$/i,
-				resourceQuery: /url/, 
+				resourceQuery: /url/,
 			},
 			{
 				test: /\.svg$/i,
