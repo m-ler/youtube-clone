@@ -48,6 +48,7 @@ const VideoCard = ({ video, hideChannelName }: Props) => {
 							display: '-webkit-box',
 							WebkitLineClamp: 2,
 							textDecoration: 'none',
+							wordBreak: 'break-word',
 						}}
 					>
 						<>{decode(video.snippet?.title)}</>
