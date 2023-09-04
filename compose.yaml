@@ -1,8 +1,13 @@
+version: '3.6'
 services:
-  server:
+  youtube-clone:
     build:
       context: .
-    environment:
-      NODE_ENV: production
+      dockerfile: Dockerfile
+      args:
+        - SITE_BASE_URL=${SITE_BASE_URL}
+        - YOUTUBE_API_KEY=${YOUTUBE_API_KEY}
+    env_file:
+      - .env
     ports:
-      - 3000:3000
+      - "3000:3000"

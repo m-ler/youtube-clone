@@ -7,10 +7,6 @@ export const youtubeAPIExeptionResponse = (error: unknown) => {
 	const message = (error as GaxiosError).message || DEFAULT_MESSAGE
 	const status = (error as GaxiosError).response?.status || 500
 
-	console.log('******** GOTTEN ********************************')
-	console.log(message)
-	console.log(status)
-
 	return new NextResponse(message, {
 		status,
 		statusText: message,

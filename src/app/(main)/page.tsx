@@ -1,23 +1,21 @@
-import { SITE_BASE_URL } from '@/config'
 import Home from './Home'
-import { youtube_v3 } from 'googleapis'
+import { youtubeClient } from '@/lib/googleapis/youtube-client'
+
+export const revalidate = 60 * 60
 
 const getFeed = async () => {
-	const res = await fetch(`${SITE_BASE_URL}/api/videos`, {
-		next: {
-			revalidate: 60 * 60,
-		},
-	})
-	if (res.ok) {
-		try {
-			const data = (await res.json()) as youtube_v3.Schema$VideoListResponse
-			return data.items
-		} catch (e) {
-			return []
-		}
-	}
+	try {
+		const res = await youtubeClient.videos.list({
+			part: ['snippet, contentDetails, statistics'],
+			chart: 'mostPopular',
+			regionCode: 'US',
+			maxResults: 50,
+		})
 
-	throw new Error(res.statusText)
+		return res.data.items
+	} catch (e) {
+		return []
+	}
 }
 
 const Page = async () => {
