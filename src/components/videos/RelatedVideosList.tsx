@@ -4,6 +4,8 @@ import { Suspense } from 'react'
 import VideoListSkeleton from './VideoListSkeleton'
 import VideoList from './VideoList'
 
+export const revalidate = 60 * 60
+
 const getVideos = async () => {
 	try {
 		const res = await fetch(`${SITE_BASE_URL}/api/videos`)
@@ -16,7 +18,7 @@ const getVideos = async () => {
 
 const Component = async () => {
 	const videos = await getVideos()
-	return <VideoList videos={videos || []} dense/>
+	return <VideoList videos={videos || []} dense />
 }
 
 const RelatedVideosList = () => {
